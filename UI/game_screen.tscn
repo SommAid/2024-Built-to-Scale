@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/game_screen.gd" id="1_peyei"]
 
-[node name="GameScreen2" type="CanvasLayer"]
+[node name="GameScreen" type="CanvasLayer"]
 process_mode = 3
 layer = 5
 script = ExtResource("1_peyei")
