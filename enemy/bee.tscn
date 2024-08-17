@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d0mfhfhiqt2wp"]
+[gd_scene load_steps=28 format=3 uid="uid://d0mfhfhiqt2wp"]
 
 [ext_resource type="Script" path="res://enemy/bee.gd" id="1_jcgvf"]
 [ext_resource type="Texture2D" uid="uid://nlh78eyni63j" path="res://enemy/Enemies/Bee/Attack (36x34).png" id="1_kfeeu"]
@@ -157,10 +157,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhc45"]
-size = Vector2(14, 20)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82rd8"]
+radius = 7.0
+height = 22.0
 
-[node name="bee" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc8xf"]
+height = 26.0
+
+[node name="bee" type="Node2D" groups=["Enemy"]]
 script = ExtResource("1_jcgvf")
 
 [node name="beebody" type="CharacterBody2D" parent="."]
@@ -174,10 +178,20 @@ sprite_frames = SubResource("SpriteFrames_c2dmw")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="beebody"]
-position = Vector2(1, 0)
-shape = SubResource("RectangleShape2D_yhc45")
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_82rd8")
+
+[node name="Hurtbox" type="Area2D" parent="beebody" groups=["Enemy"]]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="beebody/Hurtbox"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_tc8xf")
+debug_color = Color(0.849539, 0.276636, 0.638693, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="body_entered" from="beebody/Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="beebody/Hurtbox" to="beebody" method="_on_hurtbox_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
