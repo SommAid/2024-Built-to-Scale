@@ -27,6 +27,7 @@ func _physics_process(_delta):
 	velocity = input_direction * move_speed
 	
 	# Move and Slide function uses vel. of character to move character on map
+	
 	pick_new_state()
 	move_and_slide()
 

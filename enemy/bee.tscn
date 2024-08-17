@@ -1,6 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://d0mfhfhiqt2wp"]
+[gd_scene load_steps=27 format=3 uid="uid://d0mfhfhiqt2wp"]
 
+[ext_resource type="Script" path="res://enemy/bee.gd" id="1_jcgvf"]
 [ext_resource type="Texture2D" uid="uid://nlh78eyni63j" path="res://enemy/Enemies/Bee/Attack (36x34).png" id="1_kfeeu"]
+[ext_resource type="Script" path="res://enemy/beebody.gd" id="2_6ebpe"]
 [ext_resource type="Texture2D" uid="uid://bwfrd7dbu1vvn" path="res://enemy/Enemies/Bee/Hit (36x34).png" id="2_58cbi"]
 [ext_resource type="Texture2D" uid="uid://dljfohflwm0th" path="res://enemy/Enemies/Bee/Idle (36x34).png" id="3_l0ynb"]
 
@@ -158,13 +160,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhc45"]
 size = Vector2(14, 20)
 
-[node name="bee" type="CharacterBody2D"]
+[node name="bee" type="Node2D"]
+script = ExtResource("1_jcgvf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="beebody" type="CharacterBody2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("2_6ebpe")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="beebody"]
 sprite_frames = SubResource("SpriteFrames_c2dmw")
 animation = &"idle"
-frame_progress = 0.147578
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="beebody"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_yhc45")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

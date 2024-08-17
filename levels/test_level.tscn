@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfjweuh7ltkac"]
+[gd_scene load_steps=8 format=3 uid="uid://bfjweuh7ltkac"]
 
 [ext_resource type="PackedScene" uid="uid://mieoa1yk6c5f" path="res://player_cat/player_cat.tscn" id="1_6blpf"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="2_04l3g"]
 [ext_resource type="PackedScene" uid="uid://cynafbebnux6j" path="res://enemy/mob.tscn" id="3_ey2fb"]
+[ext_resource type="PackedScene" uid="uid://d0mfhfhiqt2wp" path="res://enemy/bee.tscn" id="4_30wxc"]
 [ext_resource type="PackedScene" uid="uid://dyr0id2lsgc1i" path="res://UI/GameScreen.tscn" id="4_dw0r3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shu6r"]
@@ -254,3 +255,6 @@ position = Vector2(33, -41)
 position = Vector2(78, 73)
 
 [node name="GameScreen" parent="." instance=ExtResource("4_dw0r3")]
+
+[node name="bee" parent="." instance=ExtResource("4_30wxc")]
+position = Vector2(-154, 121)
