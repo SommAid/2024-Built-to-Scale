@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyr0id2lsgc1i"]
+
+[ext_resource type="Script" path="res://UI/pause.gd" id="1_q1slf"]
+
+[node name="GameScreen" type="CanvasLayer"]
+layer = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="pause" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q1slf")
+
+[node name="BlackOverlay" type="ColorRect" parent="pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.337255)
