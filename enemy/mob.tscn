@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cynafbebnux6j"]
+[gd_scene load_steps=65 format=3 uid="uid://diw8g75s226t"]
 
 [ext_resource type="Script" path="res://enemy/mob.gd" id="1_bj26v"]
 [ext_resource type="Texture2D" uid="uid://bm48ikfbgegca" path="res://enemy/V1/Walk.png" id="2_127di"]
@@ -426,8 +426,11 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vnekg"]
-radius = 6.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcf74"]
+size = Vector2(13.3333, 3.66667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2fwf8"]
+size = Vector2(42, 12)
 
 [node name="mob" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -440,10 +443,20 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_lykpx")
 animation = &"walk"
 autoplay = "walk"
-frame = 6
-frame_progress = 0.252061
+frame = 4
+frame_progress = 0.982699
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -18)
+position = Vector2(-5, -6)
 scale = Vector2(3, 3)
-shape = SubResource("CircleShape2D_vnekg")
+shape = SubResource("RectangleShape2D_fcf74")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-5, -6)
+shape = SubResource("RectangleShape2D_2fwf8")
+debug_color = Color(0.974807, 0, 0.424073, 0.42)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

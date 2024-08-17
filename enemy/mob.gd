@@ -4,8 +4,7 @@ extends CharacterBody2D
 @export var speed : int = 50
 @export var jump_velocity : int = -400
 @export_category("Enemy Health")
-@export var max_health : int = 5
-@export var current_health : int = max_health
+@export var health_amount : int = 5
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var player = get_node("/root/TestLevel/PlayerCat")
@@ -19,5 +18,11 @@ func _physics_process(_delta):
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * speed
 	move_and_slide()
-
-
+	
+func _on_hurtbox_area_entered(area):
+	if area.has_method("get_damage_amount"):
+		var node = area as Node
+		health_amount -= node.damage_amount
+		print("Health amount: ", str(health_amount))
+		if health_amount <= 0:
+			queue_free()
