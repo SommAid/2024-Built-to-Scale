@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://cakoq3vm1vp4o"]
+[gd_resource type="SpriteFrames" load_steps=57 format=3 uid="uid://bnynr8ndoawhc"]
 
 [ext_resource type="Texture2D" uid="uid://b23w04vrsqlgf" path="res://enemy/V1/Die.png" id="1_eutcx"]
 [ext_resource type="Texture2D" uid="uid://cyntddt3jcap0" path="res://enemy/V1/Hit.png" id="2_t70vv"]

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2q7abpfswtl4"]
+[gd_scene load_steps=7 format=3 uid="uid://cu7yxa5e5wc07"]
 
 [ext_resource type="Script" path="res://mob.gd" id="1_bj26v"]
 [ext_resource type="Script" path="res://slime.gd" id="1_cqo41"]
-[ext_resource type="SpriteFrames" uid="uid://cakoq3vm1vp4o" path="res://new_sprite_frames.tres" id="2_ykrfx"]
+[ext_resource type="SpriteFrames" uid="uid://bnynr8ndoawhc" path="res://new_sprite_frames.tres" id="2_ykrfx"]
 
 [sub_resource type="Animation" id="Animation_rj5k4"]
 resource_name = "walk"
@@ -16,6 +16,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_vnekg"]
 
 [node name="mob" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_bj26v")
 metadata/_edit_lock_ = true
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://mieoa1yk6c5f"]
+[gd_scene load_steps=29 format=3 uid="uid://mieoa1yk6c5f"]
 
 [ext_resource type="Script" path="res://PlayerCat.gd" id="1_6bx21"]
 [ext_resource type="Texture2D" uid="uid://gcp24qctx2vb" path="res://player_cat/art/Basic Charakter Spritesheet.png" id="2_1jys3"]
+[ext_resource type="PackedScene" uid="uid://dbfvjlm0f24e1" path="res://gun/gun.tscn" id="3_04qft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jx00"]
 size = Vector2(10, 4)
@@ -268,3 +269,5 @@ parameters/Idle/blend_position = Vector2(-0.00173914, -0.00484574)
 parameters/Walk/blend_position = Vector2(0, 0)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Gun" parent="." instance=ExtResource("3_04qft")]
