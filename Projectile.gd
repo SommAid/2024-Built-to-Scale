@@ -17,11 +17,14 @@ func _ready():
 	player_direction = global_position.direction_to(player.global_position)
 
 func _physics_process(_delta):
+	#var distance = global_position.distance_to(player.global_position)
+	
 	velocity = player_direction*SPEED
+	#print("Velocity: ", str(velocity))
 	move_and_slide()
 
 func _on_area_2d_body_entered(body):
-	print("hit")
+	# print("hit")
 	queue_free()
 
 

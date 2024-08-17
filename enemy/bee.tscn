@@ -157,17 +157,16 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_82rd8"]
-radius = 7.0
-height = 22.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vl4qa"]
+radius = 9.0
+height = 24.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tc8xf"]
-height = 26.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lfdwv"]
 
-[node name="bee" type="Node2D" groups=["Enemy"]]
+[node name="bee" type="Node2D"]
 script = ExtResource("1_jcgvf")
 
-[node name="beebody" type="CharacterBody2D" parent="."]
+[node name="beebody" type="CharacterBody2D" parent="." groups=["Enemy"]]
 unique_name_in_owner = true
 collision_layer = 2
 collision_mask = 3
@@ -178,20 +177,19 @@ sprite_frames = SubResource("SpriteFrames_c2dmw")
 animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="beebody"]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_82rd8")
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_vl4qa")
 
-[node name="Hurtbox" type="Area2D" parent="beebody" groups=["Enemy"]]
+[node name="Hurtbox" type="Area2D" parent="beebody"]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="beebody/Hurtbox"]
 position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_tc8xf")
-debug_color = Color(0.849539, 0.276636, 0.638693, 0.42)
+shape = SubResource("CapsuleShape2D_lfdwv")
+debug_color = Color(0.988228, 0, 0.304342, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="body_entered" from="beebody/Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="body_entered" from="beebody/Hurtbox" to="beebody" method="_on_hurtbox_body_entered"]
+[connection signal="area_entered" from="beebody/Hurtbox" to="beebody" method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
