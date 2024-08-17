@@ -15,6 +15,10 @@ run/main_scene="res://levels/test_level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+HealthManager="*res://scripts/health_manager.gd"
+
 [display]
 
 window/stretch/scale=3.0

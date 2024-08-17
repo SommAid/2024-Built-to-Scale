@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfvjlm0f24e1" path="res://gun/gun.tscn" id="3_04qft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jx00"]
-size = Vector2(10, 4)
+size = Vector2(10, 6)
 
 [sub_resource type="Animation" id="Animation_dd6bj"]
 length = 0.001
@@ -248,7 +248,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 script = ExtResource("1_6bx21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_7jx00")
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
@@ -271,3 +271,4 @@ parameters/Walk/blend_position = Vector2(0, 0)
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_04qft")]
+visible = false
