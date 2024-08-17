@@ -1,5 +1,4 @@
-extends Control
-@onready var black_overlay = $BlackOverlay
+extends CanvasLayer
 
 func _input(event):
 	if event.is_action_pressed("pause menu"):
@@ -7,4 +6,3 @@ func _input(event):
 			GameManager.resume_game()
 		else:
 			GameManager.pause_game()
-		visible = GameManager.pause_state
