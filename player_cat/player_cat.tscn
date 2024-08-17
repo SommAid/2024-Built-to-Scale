@@ -251,7 +251,7 @@ script = ExtResource("1_6bx21")
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_7jx00")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
 texture = ExtResource("2_1jys3")
 hframes = 4
 vframes = 4
