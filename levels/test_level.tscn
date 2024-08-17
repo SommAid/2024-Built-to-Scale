@@ -225,6 +225,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_shu6r")
 
 [node name="TestLevel" type="Node2D"]
+y_sort_enabled = true
 
 [node name="PlayerCat" parent="." instance=ExtResource("1_6blpf")]
 position = Vector2(-4, -13)
