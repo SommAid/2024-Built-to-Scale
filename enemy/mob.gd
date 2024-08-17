@@ -1,8 +1,11 @@
 extends CharacterBody2D
 
-
+@export_category("Enemy Velocity")
 @export var speed : int = 50
 @export var jump_velocity : int = -400
+@export_category("Enemy Health")
+@export var max_health : int = 5
+@export var current_health : int = max_health
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var player = get_node("/root/TestLevel/PlayerCat")
