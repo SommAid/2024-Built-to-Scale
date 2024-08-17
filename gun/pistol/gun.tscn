@@ -13,6 +13,7 @@ script = ExtResource("1_o2fqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8efii")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
 

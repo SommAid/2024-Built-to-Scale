@@ -1,7 +1,10 @@
 extends Area2D
 
 var traveled_distance = 0
-var damage_amount : int = 1
+@export_category("Gun Mechanics")
+@export var damage_amount : int = 1
+@export var max_pierce : int = 2
+var curr_pierce : int = 0
 
 func _physics_process(delta):
 	# Max speed and range of bullet
@@ -22,4 +25,8 @@ func get_damage_amount() -> int:
 	return damage_amount
 
 func _on_area_entered(area):
-	print("Bullet area entered")
+	if area.is_in_group("Enemy"):
+		curr_pierce += 1
+		if curr_pierce >= max_pierce:
+			queue_free()
+			

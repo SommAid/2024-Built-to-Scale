@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
+@export var health : int = 3
 
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
@@ -39,3 +40,14 @@ func pick_new_state():
 		state_machine.travel("Walk")
 	else:
 		state_machine.travel("Idle")
+
+func player_death() -> void:
+	queue_free()
+
+func _on_hurtbox_area_entered(area : Node2D):
+	if area.is_in_group("Enemy"):
+		HealthManager.decrease_health(area.get_parent().deal_damage())
+		
+		if HealthManager.current_health <= 0:
+			player_death()
+		# print("Ouch I just took: ", str(area.get_parent().deal_damage()))
