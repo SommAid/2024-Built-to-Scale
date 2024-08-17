@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://diw8g75s226t"]
+[gd_scene load_steps=65 format=3 uid="uid://cynafbebnux6j"]
 
 [ext_resource type="Script" path="res://enemy/mob.gd" id="1_bj26v"]
 [ext_resource type="Texture2D" uid="uid://bm48ikfbgegca" path="res://enemy/V1/Walk.png" id="2_127di"]

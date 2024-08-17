@@ -211,7 +211,7 @@ size = Vector2(20, 10)
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_m2pvu")
 animation = &"walk"
-frame_progress = 0.33053
+frame_progress = 0.899893
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 18)
