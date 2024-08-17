@@ -244,3 +244,9 @@ layer_1/tile_data = PackedInt32Array(-524299, 589824, 5, -327691, 589824, 5, -52
 
 [node name="mob" parent="." instance=ExtResource("3_ey2fb")]
 position = Vector2(-81, 13)
+
+[node name="mob2" parent="." instance=ExtResource("3_ey2fb")]
+position = Vector2(33, -41)
+
+[node name="mob3" parent="." instance=ExtResource("3_ey2fb")]
+position = Vector2(78, 73)
