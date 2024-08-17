@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfvjlm0f24e1" path="res://gun/pistol/gun.tscn" id="3_04qft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7jx00"]
-size = Vector2(10, 4)
+size = Vector2(10, 3)
 
 [sub_resource type="Animation" id="Animation_dd6bj"]
 length = 0.001
@@ -256,7 +256,6 @@ shape = SubResource("RectangleShape2D_7jx00")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." groups=["Player"]]
-unique_name_in_owner = true
 texture = ExtResource("2_1jys3")
 hframes = 4
 vframes = 4
