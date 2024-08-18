@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bstxknjwln86w"]
+[gd_scene load_steps=5 format=3 uid="uid://bstxknjwln86w"]
 
 [ext_resource type="Script" path="res://Projectile.gd" id="1_srd8l"]
+[ext_resource type="Script" path="res://enemy/Marker2D.gd" id="2_5kg1x"]
 [ext_resource type="Texture2D" uid="uid://n584xkbty2vb" path="res://enemy/Enemies/Bee/Bullet.png" id="2_s2r0c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5vw6n"]
@@ -11,22 +12,30 @@ height = 8.0
 collision_layer = 4
 script = ExtResource("1_srd8l")
 
-[node name="Bullet" type="Sprite2D" parent="."]
-texture = ExtResource("2_s2r0c")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_5vw6n")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(3, 0)
 shape = SubResource("CapsuleShape2D_5vw6n")
 debug_color = Color(0.827271, 0.252084, 0.761388, 0.42)
 
 [node name="Life" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+rotation = 1.5708
+script = ExtResource("2_5kg1x")
+
+[node name="Bullet" type="Sprite2D" parent="Marker2D"]
+position = Vector2(0, -3)
+rotation = 1.5708
+texture = ExtResource("2_s2r0c")
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_area_2d_body_entered"]

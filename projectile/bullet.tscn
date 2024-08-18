@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d5ngj7jx1kao"]
+[gd_scene load_steps=5 format=3 uid="uid://d5ngj7jx1kao"]
 
 [ext_resource type="Script" path="res://bullet.gd" id="1_11qbl"]
+[ext_resource type="Script" path="res://projectile/Marker2D.gd" id="2_sg2on"]
 [ext_resource type="Texture2D" uid="uid://cbpv7myercp1e" path="res://projectile/projectile.png" id="2_veljo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4w85a"]
@@ -13,13 +14,19 @@ rotation = 0.446781
 collision_mask = 2
 script = ExtResource("1_11qbl")
 
-[node name="Projectile" type="Sprite2D" parent="."]
-position = Vector2(-6.05279, -1.84389)
+[node name="Marker2D" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-8.04116, -0.582917)
+rotation = -0.120428
 scale = Vector2(0.158869, 0.158869)
+script = ExtResource("2_sg2on")
+
+[node name="Projectile" type="Sprite2D" parent="Marker2D"]
+position = Vector2(19.7496, -2.48224)
 texture = ExtResource("2_veljo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-4.00172, -1.40933)
+position = Vector2(-3.09988, -1.8414)
 rotation = 0.0788293
 shape = SubResource("CircleShape2D_4w85a")
 
