@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://k2317ah6g7nr"]
+[gd_scene load_steps=5 format=3 uid="uid://bstxknjwln86w"]
 
 [ext_resource type="Script" path="res://enemy/Projectile.gd" id="1_srd8l"]
 [ext_resource type="Script" path="res://enemy/Marker2D.gd" id="2_5kg1x"]

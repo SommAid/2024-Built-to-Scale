@@ -11,7 +11,8 @@ extends CharacterBody2D
 @export var damage_amount : int = 1
 @export var range : int = 100
 
-var slime_glob = preload("res://enemy/slime_glob.tscn")
+#var slime_glob = preload("res://enemy/slime_glob.tscn")
+var slime_glob = preload("res://enemy/Completed Mobs/Blueraspberry Slime/slime_glob.tscn")
 
 @onready var muzzle = $muzzle
 @onready var animated_sprite_2d = $AnimatedSprite2D
