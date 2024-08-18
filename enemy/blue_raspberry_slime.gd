@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_velocity : int = -400
 
 @export_category("Enemy Health")
-@export var health_amount : int = 5
+@export var health_amount : int = 15
 
 @export_category("Enemy Damage")
 @export var damage_amount : int = 1
@@ -13,14 +13,12 @@ extends CharacterBody2D
 
 var slime_glob = preload("res://enemy/slime_glob.tscn")
 
-@onready var timer = $Timer
 @onready var muzzle = $muzzle
 @onready var animated_sprite_2d = $AnimatedSprite2D
 # @onready var player = get_node("/root/TestLevel/PlayerCat")
 
 var player : CharacterBody2D
-var direction : Vector2
-enum enemy_state {Attack, Walk}
+enum enemy_state {Attack, Walk, Dying}
 var current_state : enemy_state = enemy_state.Walk
 var muzzle_position
 var can_shoot : bool = true
@@ -34,41 +32,39 @@ func _ready():
 	animated_sprite_2d.play("walk")
 	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
 
-func _physics_process(delta):
-	var speed = enemy_speed
+func _physics_process(_delta):
 	var direction : Vector2
 	var distance : float = KEY_NONE
 	if player != null:
 		direction = global_position.direction_to(player.global_position)
 		distance = global_position.distance_to(player.global_position)
-
-	if distance != KEY_NONE and !is_dying:
 		var flip = false if direction[0] < 0 else true
 		animated_sprite_2d.flip_h = flip
 		slime_muzzle_position(flip)
-		if distance <= range:
-			speed = 0
-			enemy_shoot()
-		elif can_walk:
-			enemy_walk()
-	else:
-		speed = 0
-
-	velocity = direction * speed
+		if current_state != enemy_state.Dying:
+			if distance > range:
+				enemy_walk(direction)
+			elif distance <= range:
+				enemy_attack(direction)
 	move_and_slide()
 	
-func enemy_walk():
-	animated_sprite_2d.play("walk")
+func enemy_walk(direction : Vector2):
+	if can_walk:
+		current_state = enemy_state.Walk
+		animated_sprite_2d.play("walk")
+		velocity = direction * enemy_speed
 
-func enemy_shoot():
+func enemy_attack(direction : Vector2):
+	velocity = direction * 0
 	if can_shoot:
+		current_state = enemy_state.Attack
 		var instance = slime_glob.instantiate() as Node2D
 		instance.global_position = muzzle.global_position
 		get_parent().add_child(instance)
 		animated_sprite_2d.play("attack")
 		can_shoot = false
 		can_walk = false
-		timer.start()
+		animated_sprite_2d.animation_finished
 
 func deal_damage() -> int:
 	return damage_amount
@@ -78,11 +74,6 @@ func slime_muzzle_position(flip : bool):
 		muzzle.position.x = -muzzle_position.x
 	else:
 		muzzle.position.x = muzzle_position.x
-	
-
-func _on_timer_timeout():
-	can_shoot = true
-	can_walk = true
 
 func _on_hurtbox_area_entered(area):
 	if area.has_method("get_damage_amount"):
@@ -90,7 +81,14 @@ func _on_hurtbox_area_entered(area):
 		health_amount -= node.damage_amount
 		# print("Health amount: ", str(health_amount))
 		if health_amount <= 0:
-			is_dying = true
+			velocity = Vector2.ZERO
+			current_state = enemy_state.Dying
 			animated_sprite_2d.play("death")
-			await get_tree().create_timer(1).timeout
-			queue_free() # Replace with function body.
+			animated_sprite_2d.animation_finished
+
+func _on_animated_sprite_2d_animation_finished():
+	if current_state == enemy_state.Attack:
+		can_shoot = true
+		can_walk = true
+	elif current_state == enemy_state.Dying:
+		queue_free()

@@ -56,9 +56,9 @@ func player_death() -> void:
 	queue_free()
 
 func _on_hurtbox_area_entered(area : Node2D):
-	if area.is_in_group("Enemy"):
+	print("Player got hit")
+	if area.is_in_group("Enemy") or area.is_in_group("Enemy Projectile"):
 		HealthManager.decrease_health(area.get_parent().deal_damage())
-		
 		if HealthManager.current_health <= 0:
 			player_death()
 		# print("Ouch I just took: ", str(area.get_parent().deal_damage()))

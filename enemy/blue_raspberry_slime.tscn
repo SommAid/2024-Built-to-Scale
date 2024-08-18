@@ -3,14 +3,6 @@
 [ext_resource type="Script" path="res://enemy/blue_raspberry_slime.gd" id="1_f0vfn"]
 [ext_resource type="Texture2D" uid="uid://pk3w3enijhhu" path="res://enemy/V1/slime-Sheet.png" id="2_g35xg"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nbb4p"]
-atlas = ExtResource("2_g35xg")
-region = Rect2(0, 25, 32, 25)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1qpfu"]
-atlas = ExtResource("2_g35xg")
-region = Rect2(32, 25, 32, 25)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8nw0"]
 atlas = ExtResource("2_g35xg")
 region = Rect2(64, 25, 32, 25)
@@ -22,6 +14,14 @@ region = Rect2(96, 25, 32, 25)
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ojr1"]
 atlas = ExtResource("2_g35xg")
 region = Rect2(128, 25, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbb4p"]
+atlas = ExtResource("2_g35xg")
+region = Rect2(0, 25, 32, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qpfu"]
+atlas = ExtResource("2_g35xg")
+region = Rect2(32, 25, 32, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pkdbx"]
 atlas = ExtResource("2_g35xg")
@@ -75,12 +75,6 @@ region = Rect2(224, 0, 32, 25)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nbb4p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1qpfu")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_w8nw0")
 }, {
 "duration": 1.0,
@@ -88,6 +82,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5ojr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbb4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qpfu")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pkdbx")
@@ -159,7 +159,7 @@ script = ExtResource("1_f0vfn")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = SubResource("SpriteFrames_8cg2o")
-animation = &"death"
+animation = &"attack"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -179,9 +179,6 @@ scale = Vector2(1.05, 1.05)
 shape = SubResource("CircleShape2D_g0nip")
 debug_color = Color(0.959342, 7.70092e-07, 0.52216, 0.42)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

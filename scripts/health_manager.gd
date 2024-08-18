@@ -8,8 +8,8 @@ signal on_health_changed
 func _ready():
 	current_health = max_health
 
-func set_max_health(max : int):
-	max_health = max
+func set_max_health(player_max_health : int):
+	max_health = player_max_health
 	
 func decrease_health(damage: int):
 	current_health -= damage

@@ -59,8 +59,11 @@ script = ExtResource("2_hlpjy")
 wait_time = 2.0
 autostart = true
 
-[node name="Hitbox" type="Area2D" parent="."]
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy Projectile"]]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, 5)
 shape = SubResource("CircleShape2D_s2xn2")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
