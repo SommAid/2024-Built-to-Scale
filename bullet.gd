@@ -15,6 +15,7 @@ func _physics_process(delta):
 	var direction = Vector2.RIGHT.rotated(rotation)
 	position += direction * SPEED * delta
 	
+	
 	traveled_distance += SPEED * delta
 	# print("traveled_distance: ", traveled_distance)
 	# If bullet is out of range, delete the bullet

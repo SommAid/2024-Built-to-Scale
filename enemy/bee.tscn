@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://d0mfhfhiqt2wp"]
+[gd_scene load_steps=28 format=3 uid="uid://bsgptpowje8rr"]
 
 [ext_resource type="Script" path="res://enemy/bee.gd" id="1_jcgvf"]
 [ext_resource type="Texture2D" uid="uid://nlh78eyni63j" path="res://enemy/Enemies/Bee/Attack (36x34).png" id="1_kfeeu"]
