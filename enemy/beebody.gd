@@ -18,7 +18,9 @@ var player : CharacterBody2D
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	animated_sprite_2d.play("idle")
-	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
+	var player_list = get_tree().get_nodes_in_group("Player")
+	if player_list.size() > 0:
+		player = player_list[0] as CharacterBody2D
 
 func _physics_process(_delta):
 	var direction : Vector2
