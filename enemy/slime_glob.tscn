@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://bfjeualyotj52"]
+
+[ext_resource type="Texture2D" uid="uid://cmewhwgtqi7aw" path="res://enemy/Monsters_Creatures_Fantasy/Slime 8x8 Idle.png" id="1_8agyq"]
+[ext_resource type="Script" path="res://enemy/slime_glob.gd" id="2_hlpjy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlpqe"]
+atlas = ExtResource("1_8agyq")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhxwu"]
+atlas = ExtResource("1_8agyq")
+region = Rect2(80, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_317kp"]
+atlas = ExtResource("1_8agyq")
+region = Rect2(96, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t5ds2"]
+atlas = ExtResource("1_8agyq")
+region = Rect2(112, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ybqj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlpqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhxwu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_317kp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t5ds2")
+}],
+"loop": true,
+"name": &"blob",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s2xn2"]
+radius = 3.16228
+
+[node name="SlimeGlob" type="AnimatedSprite2D"]
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_3ybqj")
+animation = &"blob"
+autoplay = "blob"
+frame_progress = 0.483628
+script = ExtResource("2_hlpjy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_s2xn2")

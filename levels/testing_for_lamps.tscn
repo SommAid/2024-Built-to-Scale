@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://p7vbype7wp1r"]
+
+[ext_resource type="PackedScene" uid="uid://osgwpl6wog3h" path="res://levels/individual_testing.tscn" id="1_676m2"]
+[ext_resource type="PackedScene" uid="uid://cjjneojh8m56a" path="res://enemy/blue_raspberry_slime.tscn" id="2_vl3lo"]
+
+[node name="IndividualTesting" instance=ExtResource("1_676m2")]
+
+[node name="CharacterBody2D" parent="." index="4" instance=ExtResource("2_vl3lo")]
+position = Vector2(-100, 68)

@@ -7,12 +7,14 @@
 radius = 156.029
 
 [node name="Gun" type="Area2D"]
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_o2fqe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_8efii")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="WeaponPivot" type="Marker2D" parent="."]
 

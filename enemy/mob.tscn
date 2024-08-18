@@ -433,6 +433,7 @@ size = Vector2(13.3333, 3.66667)
 size = Vector2(42, 12)
 
 [node name="mob" type="CharacterBody2D" groups=["Enemy"]]
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_bj26v")
