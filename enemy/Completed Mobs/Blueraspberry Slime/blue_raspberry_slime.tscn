@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://cjjneojh8m56a"]
 
-[ext_resource type="Script" path="res://enemy/blue_raspberry_slime.gd" id="1_f0vfn"]
+[ext_resource type="Script" path="res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.gd" id="1_f0vfn"]
 [ext_resource type="Texture2D" uid="uid://pk3w3enijhhu" path="res://enemy/V1/slime-Sheet.png" id="2_g35xg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8nw0"]
