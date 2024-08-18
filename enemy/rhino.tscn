@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://d16rmedwk6i28"]
+[gd_scene load_steps=30 format=3 uid="uid://d16rmedwk6i28"]
 
 [ext_resource type="Texture2D" uid="uid://lj4g5n7pjqmu" path="res://enemy/Enemies/Rino/Hit (52x34).png" id="1_6ej3y"]
+[ext_resource type="Script" path="res://enemy/rhino.gd" id="1_e1oxs"]
 [ext_resource type="Texture2D" uid="uid://ccuoyiwdiid31" path="res://enemy/Enemies/Rino/Idle (52x34).png" id="2_1odun"]
 [ext_resource type="Texture2D" uid="uid://cpdrr5al0casm" path="res://enemy/Enemies/Rino/Run (52x34).png" id="3_favc5"]
 
@@ -179,13 +180,25 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d77tq"]
 size = Vector2(20, 6.5)
 
-[node name="rhino" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5tltj"]
+radius = 11.0
+
+[node name="rhino" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_e1oxs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_57fop")
 animation = &"run"
-frame_progress = 0.426537
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(5, 11.25)
 shape = SubResource("RectangleShape2D_d77tq")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(4, 2)
+shape = SubResource("CircleShape2D_5tltj")
+debug_color = Color(0.783736, 0.350988, 0.661424, 0.42)
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

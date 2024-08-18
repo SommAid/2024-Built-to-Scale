@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfjweuh7ltkac"]
+[gd_scene load_steps=11 format=3 uid="uid://bfjweuh7ltkac"]
 
 [ext_resource type="PackedScene" uid="uid://mieoa1yk6c5f" path="res://player_cat/player_cat.tscn" id="1_6blpf"]
 [ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_bxwn2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://levels/TileMap.gd" id="4_3qo0q"]
 [ext_resource type="PackedScene" uid="uid://bsgptpowje8rr" path="res://enemy/bee.tscn" id="4_30wxc"]
 [ext_resource type="PackedScene" uid="uid://8huawfgfc60u" path="res://enemy/enemy_spawner.tscn" id="6_wrm12"]
+[ext_resource type="PackedScene" uid="uid://d16rmedwk6i28" path="res://enemy/rhino.tscn" id="8_ocdmi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mljtn"]
 texture = ExtResource("2_04l3g")
@@ -263,3 +264,5 @@ position = Vector2(78, 73)
 position = Vector2(-154, 121)
 
 [node name="enemySpawner" parent="." instance=ExtResource("6_wrm12")]
+
+[node name="rhino" parent="." instance=ExtResource("8_ocdmi")]
