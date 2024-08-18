@@ -8,6 +8,7 @@ var spawnRot: float
 var zdex: int 
 var player : CharacterBody2D
 var player_direction: Vector2
+var projectile_damage : int = 1
 
 func _ready():
 	global_position = spawnPos
@@ -29,6 +30,9 @@ func _physics_process(_delta):
 func _on_life_timeout():
 	queue_free()
 
+func deal_damage() -> int:
+	return projectile_damage
 
-func _on_hurtbox_body_entered(body):
-	queue_free()
+func _on_hurtbox_area_entered(area):
+	if area.is_in_group("Player"):
+		queue_free() # Replace with function body.

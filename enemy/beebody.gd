@@ -36,7 +36,7 @@ func _on_hurtbox_area_entered(area):
 		health_amount -= node.damage_amount
 		# print("Health amount: ", str(health_amount))
 		if health_amount <= 0:
-			queue_free()
+			get_parent().queue_free()
 
 func deal_damage() -> int:
 	return damage_amount
