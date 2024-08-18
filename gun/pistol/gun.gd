@@ -5,9 +5,10 @@ extends Area2D
 @onready var gun = $"."
 
 var enemies = []
+var enemies_in_range = []
 
 func _physics_process(_delta):
-	var enemies_in_range = gun.get_overlapping_bodies()
+	enemies_in_range = gun.get_overlapping_bodies()
 	if enemies_in_range.size() > 0:
 		var target_enemy = enemies_in_range.front()
 		gun.look_at(target_enemy.global_position)
@@ -30,4 +31,6 @@ func shoot():
 
 # Begins shooting gun after timer cooldown ends
 func _on_timer_timeout():
-	shoot()
+	# Ensures there is somebody in range to shoot at
+	if enemies_in_range.size() > 0:
+		shoot()

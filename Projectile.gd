@@ -13,8 +13,10 @@ func _ready():
 	global_position = spawnPos
 	global_rotation = spawnRot
 	z_index = zdex
-	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
-	player_direction = global_position.direction_to(player.global_position)
+	# Check if player is still alive before indexing
+	if get_tree().get_nodes_in_group("Player").size() > 0:
+		player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
+		player_direction = global_position.direction_to(player.global_position)
 
 func _physics_process(_delta):
 	#var distance = global_position.distance_to(player.global_position)
