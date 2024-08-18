@@ -25,10 +25,10 @@ func _physics_process(_delta):
 	#print("Velocity: ", str(velocity))
 	move_and_slide()
 
-func _on_area_2d_body_entered(body):
-	# print("hit")
+
+func _on_life_timeout():
 	queue_free()
 
 
-func _on_life_timeout():
+func _on_hurtbox_body_entered(body):
 	queue_free()
