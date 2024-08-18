@@ -30,7 +30,9 @@ var is_dying : bool = false
 func _ready():
 	muzzle_position = muzzle.position
 	animated_sprite_2d.play("walk")
-	player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
+	var player_list = get_tree().get_nodes_in_group("Player")
+	if player_list.size() > 0:
+		player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
 
 func _physics_process(_delta):
 	var direction : Vector2

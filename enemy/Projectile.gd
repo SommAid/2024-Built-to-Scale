@@ -15,8 +15,9 @@ func _ready():
 	global_rotation = spawnRot
 	z_index = zdex
 	# Check if player is still alive before indexing
-	if get_tree().get_nodes_in_group("Player").size() > 0:
-		player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
+	var player_list = get_tree().get_nodes_in_group("Player")
+	if player_list.size() > 0:
+		player = player_list[0] as CharacterBody2D
 		player_direction = global_position.direction_to(player.global_position)
 
 func _physics_process(_delta):
