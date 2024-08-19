@@ -6,7 +6,7 @@ func _ready():
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
-	look_at(player.global_position)
+		look_at(player.global_position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

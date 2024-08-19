@@ -32,7 +32,7 @@ func _ready():
 	animated_sprite_2d.play("walk")
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
-		player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
+		player = player_list[0] as CharacterBody2D
 
 func _physics_process(_delta):
 	var direction : Vector2

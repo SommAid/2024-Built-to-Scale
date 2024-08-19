@@ -17,7 +17,7 @@ var player : CharacterBody2D
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
-	animated_sprite_2d.play("idle")
+	animated_sprite_2d.play("run")
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
@@ -31,23 +31,15 @@ func _physics_process(_delta):
 	velocity = direction * speed
 	move_and_slide()
 	
-func _on_hurtbox_area_entered(area):
-	print("Health amount: ", str(health_amount))
-	if area.has_method("get_damage_amount"):
-		var node = area as Node
-		health_amount -= node.damage_amount
-		# print("Health amount: ", str(health_amount))
-		if health_amount <= 0:
-			get_parent().queue_free()
 
 func deal_damage() -> int:
 	return damage_amount
 
 
 func _on_hurtbox_body_entered(body):
-	print("Healpppppppppppppppp")
 	if body.has_method("get_damage_amount"):
 		var node = body as Node
 		health_amount -= node.damage_amount
+		# print("Health amount: ", str(health_amount))
 		if health_amount <= 0:
 			queue_free()

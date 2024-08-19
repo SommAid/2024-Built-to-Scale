@@ -35,5 +35,5 @@ func deal_damage() -> int:
 	return projectile_damage
 
 func _on_hurtbox_area_entered(area):
-	if area.is_in_group("Player"):
+	if area.is_in_group("Player") or area.is_in_group("Enemy"):
 		queue_free() # Replace with function body.
