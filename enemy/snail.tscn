@@ -248,7 +248,7 @@ script = ExtResource("1_bga27")
 sprite_frames = SubResource("SpriteFrames_c4jsx")
 animation = &"hit"
 autoplay = "idle"
-frame_progress = 0.162875
+frame_progress = 0.200106
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 9)

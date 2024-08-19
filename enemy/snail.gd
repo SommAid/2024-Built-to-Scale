@@ -13,7 +13,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d = $AnimatedSprite2D
 # @onready var player = get_node("/root/TestLevel/PlayerCat")
 var player : CharacterBody2D
-enum animationList {hit, idle, run}
+enum animationList {hit, idle, walk}
 var state = animationList.idle
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -21,7 +21,7 @@ var state = animationList.idle
 func _ready():
 	if state == animationList.idle:
 		animated_sprite_2d.play("idle")
-		state = animationList.run
+		state = animationList.walk
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
@@ -29,13 +29,13 @@ func _ready():
 func _physics_process(_delta):
 	var direction : Vector2
 	if player != null:
-		if state == animationList.run:
-			animated_sprite_2d.play("run")
+		if state == animationList.walk:
+			animated_sprite_2d.play("walk")
 		elif state == animationList.idle:
 			animated_sprite_2d.play("idle")
 		else:
 			animated_sprite_2d.play("hit")
-			state = animationList.run
+			state = animationList.walk
 		direction = global_position.direction_to(player.global_position)
 		var flip = false if direction[0] < 0 else true
 		animated_sprite_2d.flip_h = flip

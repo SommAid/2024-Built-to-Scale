@@ -217,7 +217,7 @@ script = ExtResource("1_ryvhy")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_m2pvu")
-animation = &"idle"
+animation = &"die"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -225,6 +225,7 @@ position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_c0wi6")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
@@ -232,4 +233,12 @@ position = Vector2(1, -11)
 shape = SubResource("CircleShape2D_1csya")
 debug_color = Color(0.913976, 0.215171, 0.500195, 0.42)
 
+[node name="Timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
+[connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
