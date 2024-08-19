@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://s1gqsrfttvp1"]
 
 [ext_resource type="PackedScene" uid="uid://osgwpl6wog3h" path="res://levels/individual_testing.tscn" id="1_676m2"]
-[ext_resource type="PackedScene" uid="uid://cjjneojh8m56a" path="res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.tscn" id="2_vl3lo"]
+[ext_resource type="PackedScene" uid="uid://bf0md67apmyoc" path="res://enemy/Completed Mobs/blue amoeba/blue_amoeba.tscn" id="2_x5cnh"]
 
 [node name="IndividualTesting" instance=ExtResource("1_676m2")]
 
-[node name="CharacterBody2D" parent="." index="4" instance=ExtResource("2_vl3lo")]
-position = Vector2(-100, 68)
+[node name="BlueAmoeba" parent="." index="4" instance=ExtResource("2_x5cnh")]
+position = Vector2(-59, 33)
