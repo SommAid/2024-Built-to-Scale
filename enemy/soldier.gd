@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export_category("Enemy Velocity")
-@export var speed : int = 200
+@export var speed : int = 150
 @export var jump_velocity : int = -400
 
 @export_category("Enemy Health")
@@ -30,8 +30,8 @@ func _ready():
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
-	update_health_ui()
 	%ProgressBar.max_value = health_amount
+	update_health_ui()
 
 func update_health_ui():
 	set_health_bar()
@@ -47,7 +47,7 @@ func checkState():
 	else:
 		if state == animationList.walk:
 			animated_sprite_2d.play("walk")
-			speed = 200
+			speed = 150
 		elif state == animationList.hit:
 			animated_sprite_2d.play("hit")
 			speed = 0

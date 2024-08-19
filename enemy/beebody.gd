@@ -21,6 +21,14 @@ func _ready():
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
+	%healthbar.max_value = health_amount
+	update_health_ui()
+
+func update_health_ui():
+	set_health_bar()
+
+func  set_health_bar():
+	%healthbar.value = health_amount
 
 func _physics_process(_delta):
 	var direction : Vector2

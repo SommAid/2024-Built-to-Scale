@@ -1,9 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://bl37ysiikrr5f"]
+[gd_scene load_steps=39 format=3 uid="uid://bl37ysiikrr5f"]
 
 [ext_resource type="Script" path="res://enemy/snail.gd" id="1_bga27"]
 [ext_resource type="Texture2D" uid="uid://cltret8khf4j6" path="res://enemy/Enemies/Snail/Hit (38x24).png" id="1_wgltx"]
 [ext_resource type="Texture2D" uid="uid://dsde00bgsqgjp" path="res://enemy/Enemies/Snail/Idle (38x24).png" id="2_nf3o7"]
 [ext_resource type="Texture2D" uid="uid://buiwrw8kci2e0" path="res://enemy/Enemies/Snail/Walk (38x24).png" id="3_ldghy"]
+[ext_resource type="Script" path="res://enemy/healthbar.gd" id="5_2b62t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukq2f"]
 atlas = ExtResource("1_wgltx")
@@ -261,5 +262,14 @@ collision_layer = 2
 position = Vector2(0.5, 6.5)
 shape = SubResource("RectangleShape2D_oxvgh")
 debug_color = Color(0.892152, 0.242066, 0.544913, 0.42)
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -16.0
+offset_top = -12.0
+offset_right = 19.0
+offset_bottom = -8.0
+show_percentage = false
+script = ExtResource("5_2b62t")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

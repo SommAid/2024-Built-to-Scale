@@ -1,7 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://cjjneojh8m56a"]
+[gd_scene load_steps=24 format=3 uid="uid://cjjneojh8m56a"]
 
 [ext_resource type="Script" path="res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.gd" id="1_f0vfn"]
 [ext_resource type="Texture2D" uid="uid://pk3w3enijhhu" path="res://enemy/V1/slime-Sheet.png" id="2_g35xg"]
+[ext_resource type="Script" path="res://enemy/Completed Mobs/Blueraspberry Slime/healthbar.gd" id="3_cs5i5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w8nw0"]
 atlas = ExtResource("2_g35xg")
@@ -178,6 +179,15 @@ position = Vector2(3.8147e-06, -9.53674e-07)
 scale = Vector2(1.05, 1.05)
 shape = SubResource("CircleShape2D_g0nip")
 debug_color = Color(0.959342, 7.70092e-07, 0.52216, 0.42)
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -14.0
+offset_top = -26.0
+offset_right = 14.0
+offset_bottom = -22.0
+show_percentage = false
+script = ExtResource("3_cs5i5")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

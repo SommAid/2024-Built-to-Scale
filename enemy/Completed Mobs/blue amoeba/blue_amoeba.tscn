@@ -1,10 +1,11 @@
-[gd_scene load_steps=36 format=3 uid="uid://bf0md67apmyoc"]
+[gd_scene load_steps=37 format=3 uid="uid://bf0md67apmyoc"]
 
 [ext_resource type="Script" path="res://enemy/Completed Mobs/blue amoeba/blue_amoeba.gd" id="1_wo2t1"]
 [ext_resource type="Texture2D" uid="uid://cae5fuaw1nard" path="res://enemy/Monsters_Creatures_Fantasy/slime_attack.png" id="2_q12tp"]
 [ext_resource type="Texture2D" uid="uid://d017dex4wulsy" path="res://enemy/Monsters_Creatures_Fantasy/slime_charge.png" id="3_q8xjd"]
 [ext_resource type="Texture2D" uid="uid://chvh7l4mwyg35" path="res://enemy/Monsters_Creatures_Fantasy/slime_rage.png" id="4_fxdtm"]
 [ext_resource type="Texture2D" uid="uid://c0u41tnplngh0" path="res://enemy/Monsters_Creatures_Fantasy/slime_move.png" id="4_tpp3c"]
+[ext_resource type="Script" path="res://enemy/Completed Mobs/blue amoeba/healthbar.gd" id="6_aafrg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2unp"]
 atlas = ExtResource("2_q12tp")
@@ -265,9 +266,18 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -14.0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -21.0
+show_percentage = false
+script = ExtResource("6_aafrg")
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="WeaponArea" to="." method="_on_weapon_area_area_entered"]
-[connection signal="timeout" from="RageDuration" to="." method="_on_rage_duration_timeout"]
 [connection signal="timeout" from="RageDuration" to="." method="_on_charge_duration_timeout"]
+[connection signal="timeout" from="RageDuration" to="." method="_on_rage_duration_timeout"]
 [connection signal="timeout" from="RageCooldown" to="." method="_on_rage_cooldown_timeout"]

@@ -280,6 +280,9 @@ y_sort_enabled = true
 [node name="PlayerCat" parent="." instance=ExtResource("1_6blpf")]
 position = Vector2(-4, -13)
 
+[node name="enemySpawner" parent="PlayerCat" instance=ExtResource("6_wrm12")]
+position = Vector2(4, 13)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 
@@ -304,8 +307,6 @@ position = Vector2(78, 73)
 
 [node name="bee" parent="." instance=ExtResource("4_30wxc")]
 position = Vector2(-154, 121)
-
-[node name="enemySpawner" parent="." instance=ExtResource("6_wrm12")]
 
 [node name="rhino" parent="." instance=ExtResource("8_ocdmi")]
 position = Vector2(125, -22)
