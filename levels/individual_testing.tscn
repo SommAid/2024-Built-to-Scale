@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://osgwpl6wog3h"]
 
-[ext_resource type="PackedScene" uid="uid://c77slf4uic4d6" path="res://UI/game_screen.tscn" id="1_2suk0"]
+[ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_2suk0"]
 [ext_resource type="PackedScene" uid="uid://mieoa1yk6c5f" path="res://player_cat/player_cat.tscn" id="2_4r4eb"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="3_foir2"]
 

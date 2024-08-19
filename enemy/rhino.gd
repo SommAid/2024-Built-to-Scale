@@ -26,6 +26,8 @@ func _physics_process(_delta):
 	var direction : Vector2
 	if player != null:
 		direction = global_position.direction_to(player.global_position)
+		var flip = false if direction[0] < 0 else true
+		animated_sprite_2d.flip_h = flip
 	else:
 		speed = 0
 	velocity = direction * speed

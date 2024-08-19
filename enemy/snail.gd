@@ -37,7 +37,7 @@ func _physics_process(_delta):
 			animated_sprite_2d.play("hit")
 			state = animationList.walk
 		direction = global_position.direction_to(player.global_position)
-		var flip = false if direction[0] < 0 else true
+		var flip = true if direction[0] < 0 else false
 		animated_sprite_2d.flip_h = flip
 			
 	else:

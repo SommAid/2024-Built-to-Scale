@@ -200,7 +200,7 @@ shape = SubResource("RectangleShape2D_d77tq")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2, 3)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5tltj")
 debug_color = Color(0.783736, 0.350988, 0.661424, 0.42)
 
