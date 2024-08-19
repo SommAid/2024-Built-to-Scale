@@ -49,10 +49,11 @@ func generate_chunk(pos):
 			
 			set_cell(0, 
 			Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
-			3, 
+			0, 
 			Vector2(tmp_x, tmp_y))
 			
 			#set_cell(0, 
 			#Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
 			#0, 
 			#Vector2(round(3* (moist + 10) / 2), round(3* (tmp + 10) / 2)))
+
