@@ -18,6 +18,7 @@ shape = SubResource("CapsuleShape2D_5vw6n")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Enemy Projectile"]]
 collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(3, 0)

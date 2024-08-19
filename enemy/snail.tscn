@@ -1,5 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://bl37ysiikrr5f"]
+[gd_scene load_steps=38 format=3 uid="uid://bl37ysiikrr5f"]
 
+[ext_resource type="Script" path="res://enemy/snail.gd" id="1_bga27"]
 [ext_resource type="Texture2D" uid="uid://cltret8khf4j6" path="res://enemy/Enemies/Snail/Hit (38x24).png" id="1_wgltx"]
 [ext_resource type="Texture2D" uid="uid://dsde00bgsqgjp" path="res://enemy/Enemies/Snail/Idle (38x24).png" id="2_nf3o7"]
 [ext_resource type="Texture2D" uid="uid://buiwrw8kci2e0" path="res://enemy/Enemies/Snail/Walk (38x24).png" id="3_ldghy"]
@@ -235,13 +236,30 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2fv3d"]
 size = Vector2(20, 5)
 
-[node name="snail" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oxvgh"]
+size = Vector2(25, 7)
+
+[node name="snail" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_bga27")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c4jsx")
-animation = &"walk"
-frame_progress = 0.676107
+animation = &"hit"
+autoplay = "idle"
+frame_progress = 0.162875
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 9)
 shape = SubResource("RectangleShape2D_2fv3d")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0.5, 6.5)
+shape = SubResource("RectangleShape2D_oxvgh")
+debug_color = Color(0.892152, 0.242066, 0.544913, 0.42)
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
