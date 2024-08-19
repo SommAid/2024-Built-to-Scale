@@ -224,7 +224,7 @@ autoplay = "idle"
 position = Vector2(0, 18)
 shape = SubResource("RectangleShape2D_c0wi6")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
 unique_name_in_owner = true
 collision_layer = 2
 

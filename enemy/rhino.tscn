@@ -196,7 +196,7 @@ animation = &"idle"
 position = Vector2(5, 11.25)
 shape = SubResource("RectangleShape2D_d77tq")
 
-[node name="Hurtbox" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
