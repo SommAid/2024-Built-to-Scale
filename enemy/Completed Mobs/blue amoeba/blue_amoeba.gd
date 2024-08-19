@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export_category("Enemy Velocity")
 @export var enemy_speed : int = 28
-@export var rage_speed : int = 125
+@export var rage_speed : int = 150
 
 @export_category("Enemy Health")
 @export var health_amount : int = 25

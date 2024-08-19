@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0fv15t6scyce"]
+[gd_scene load_steps=6 format=3 uid="uid://osgwpl6wog3h"]
 
-[ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_2suk0"]
+[ext_resource type="PackedScene" uid="uid://c77slf4uic4d6" path="res://UI/game_screen.tscn" id="1_2suk0"]
 [ext_resource type="PackedScene" uid="uid://mieoa1yk6c5f" path="res://player_cat/player_cat.tscn" id="2_4r4eb"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="3_foir2"]
-[ext_resource type="PackedScene" uid="uid://cdw1lmvdo4q4h" path="res://enemy/soldier.tscn" id="4_7xixi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_shu6r"]
 texture = ExtResource("3_foir2")
@@ -244,6 +243,3 @@ layer_0/tile_data = PackedInt32Array(-458763, 65536, 1, -393227, 65536, 1, -3276
 layer_1/name = "Foreground"
 layer_1/z_index = -4
 layer_1/tile_data = PackedInt32Array(-524299, 589824, 5, -327691, 589824, 5, -524297, 589824, 5, 262135, 589824, 5, -327688, 589824, 5, -196616, 589824, 5, -8, 589824, 5, 196600, 589824, 5, 524281, 589824, 5, -196613, 524288, 5, -131077, 589824, 5, 196603, 589824, 5, -131076, 589824, 5, 524284, 589824, 5, -458754, 589824, 5, -65538, 589824, 5, -2, 589824, 5, 262142, 589824, 5, -327681, 589824, 5, -196609, 589824, 5, 393215, 524288, 5, 524287, 589824, 5, 262144, 589824, 5, 589824, 589824, 5, 524290, 589824, 5, 131075, 589824, 5, 196611, 524288, 5, 65540, 589824, 5, -262139, 589824, 5, 458758, 589824, 5, -327672, 589824, 5, 8, 589824, 5, -458742, 589824, 5, -196618, 524288, 5, -196617, 524288, 5, 655352, 524288, 5, -196614, 524288, 5, -131078, 524288, 5, 458746, 524288, 5, 589818, 524288, 5, 65531, 524288, 5, 327675, 524288, 5, -524292, 524288, 5, 196604, 524288, 5, -131075, 524288, 5, 524286, 524288, 5, 589822, 524288, 5, -393217, 524288, 5, 0, 524288, 5, 196608, 524288, 5, 589825, 524288, 5, 196610, 524288, 5, -524285, 524288, 5, -458749, 524288, 5, 65539, 524288, 5, 4, 524288, 5, 458757, 524288, 5, 524293, 524288, 5, -393209, 524288, 5, -393208, 524288, 5, 393224, 524288, 5, -524279, 524288, 5, 458761, 524288, 5, 524297, 524288, 5, -393206, 524288, 5, -327670, 524288, 5, -589813, 524288, 5, 11, 524288, 5, -524276, 524288, 5, -262132, 524288, 5, 196620, 524288, 5)
-
-[node name="soldier" parent="." instance=ExtResource("4_7xixi")]
-position = Vector2(-170, -38)
