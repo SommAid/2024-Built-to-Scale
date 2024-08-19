@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_velocity : int = -400
 
 @export_category("Enemy Health")
-@export var health_amount : int = 1000
+@export var health_amount : int = 5
 
 @export_category("Enemy Damage")
 @export var damage_amount : int = 1
@@ -25,26 +25,22 @@ func _ready():
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
-
+func checkState():
+	if state == animationList.walk:
+		animated_sprite_2d.play("walk")
+	elif state == animationList.hit:
+		animated_sprite_2d.play("hit")
+		state = animationList.walk
+	else:
+		animated_sprite_2d.play("die")
 func _physics_process(_delta):
 	var direction : Vector2
 	if player != null:
-		if state == animationList.walk:
-			animated_sprite_2d.play("walk")
-		elif state == animationList.idle:
-			animated_sprite_2d.play("idle")
-		elif state == animationList.hit:
-			animated_sprite_2d.play("hit")
-			state = animationList.walk
-		elif state == animationList.die:
-			animated_sprite_2d.play("die")
-		else:
-			animated_sprite_2d.play("attack")
-			state = animationList.walk
+		checkState()
 		direction = global_position.direction_to(player.global_position)
 		var flip = true if direction[0] < 0 else false
 		animated_sprite_2d.flip_h = flip
-			
+		print(state)
 	else:
 		speed = 0
 	velocity = direction * speed
@@ -56,10 +52,10 @@ func deal_damage() -> int:
 
 func _on_hurtbox_area_entered(area):
 	if area.has_method("get_damage_amount"):
-		state = animationList.hit
 		var node = area as Node
 		health_amount -= node.damage_amount
 		print("anything: ", str(health_amount))
+		state = animationList.hit
 		if health_amount <= 0:
 			state = animationList.die
 			queue_free()
