@@ -199,6 +199,7 @@ show_percentage = false
 script = ExtResource("6_8rxca")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [connection signal="area_entered" from="beebody/Hurtbox" to="beebody" method="_on_hurtbox_area_entered"]
