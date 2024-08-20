@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dk415ghsq6xmx"]
+
+[ext_resource type="Texture2D" uid="uid://bvbdxk36k3te1" path="res://enemy/Monsters_Creatures_Fantasy/Single Celled Ranger/octo_projectile.png" id="1_epc1i"]
+[ext_resource type="Script" path="res://enemy/Completed Mobs/single cell octo/scatter_shot.gd" id="2_e7nbx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc4l6"]
+atlas = ExtResource("1_epc1i")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfjjc"]
+atlas = ExtResource("1_epc1i")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_beh3s"]
+atlas = ExtResource("1_epc1i")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fwi5o"]
+atlas = ExtResource("1_epc1i")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m8cwk"]
+atlas = ExtResource("1_epc1i")
+region = Rect2(32, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0r37"]
+atlas = ExtResource("1_epc1i")
+region = Rect2(40, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_quawt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc4l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfjjc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_beh3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fwi5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m8cwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0r37")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gwrn"]
+radius = 2.0
+
+[node name="ScatterShot" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_quawt")
+frame_progress = 0.863985
+script = ExtResource("2_e7nbx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_8gwrn")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -19,7 +19,7 @@ var slime_glob = preload("res://enemy/Completed Mobs/Blueraspberry Slime/slime_g
 
 
 var player : CharacterBody2D
-enum enemy_state {Attack, Walk, Rage, Charge, Break}
+enum enemy_state {Attack, Walk, Rage, Charge, Break, Death}
 var current_state : enemy_state = enemy_state.Walk
 
 var is_dying : bool = false
@@ -68,9 +68,8 @@ func _on_hurtbox_area_entered(area):
 		health_amount -= node.damage_amount
 		# print("Health amount: ", str(health_amount))
 		if health_amount <= 0:
-			queue_free()
-			# current_state = enemy_state.Dying
-			# animated_sprite_2d.play("death")
+			current_state = enemy_state.Death
+			animated_sprite_2d.play("death")
 			animated_sprite_2d.animation_finished
 
 func animation_handler():
