@@ -11,12 +11,13 @@ var player_direction : float
 func shoot():
 	# Ensures stingers only spawn in if bee is alive
 	if is_instance_valid(beebody):
-		var instance = projectile.instantiate()
+		var instance = projectile.instantiate() as Node2D
 		#instance.dir = rotation
 		instance.spawnPos = beebody.global_position
 		instance.spawnRot = rotation
+		get_parent().add_child(instance)
 		#instance.zdex = z_index-1
-		main.add_child.call_deferred(instance)
+		#main.add_child.call_deferred(instance)
 		# print(player_direction)
 
 func _on_timer_timeout():
