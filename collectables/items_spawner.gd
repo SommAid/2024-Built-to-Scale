@@ -17,8 +17,6 @@ func _ready():
 		player = player_list[0] as CharacterBody2D
 		
 
-
-
 func _on_timer_timeout():
 	if player != null:
 		spawnx= player.global_position.x + (offX* flip[randi()%flip.size()])
