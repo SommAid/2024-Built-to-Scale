@@ -77,8 +77,8 @@ radius = 14.0357
 [sub_resource type="CircleShape2D" id="CircleShape2D_swqes"]
 radius = 166.012
 
-[node name="Amoeba Hero" type="CharacterBody2D" groups=["Player"]]
-collision_mask = 10
+[node name="Amoeba Hero" type="CharacterBody2D" groups=["Gun", "Player"]]
+collision_mask = 34
 script = ExtResource("1_70jk5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

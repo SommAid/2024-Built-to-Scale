@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var health : int = 5
 @export var dash_speed = 200
 
+var damage = 1
+
 @onready var inv_gun = $AttackPoint/AttackRange
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var healthbar = %healthbar
@@ -62,6 +64,7 @@ func player_death() -> void:
 func shoot():
 	const BULLET = preload("res://projectile/bullet.tscn")
 	var new_bullet = BULLET.instantiate()
+	new_bullet.damage_amount = damage
 	new_bullet.global_position = attack_point.global_position
 	new_bullet.global_rotation = attack_point.global_rotation
 	add_child(new_bullet)

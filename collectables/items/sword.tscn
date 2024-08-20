@@ -62,6 +62,7 @@ rotation = 0.771912
 shape = SubResource("RectangleShape2D_1nww4")
 
 [node name="hurtbox" type="Area2D" parent="." groups=["Item"]]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(-0.0714213, -0.0569331)
