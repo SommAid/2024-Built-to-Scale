@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://lb732baqcuma"]
+
+[ext_resource type="PackedScene" uid="uid://50eudo4cyirj" path="res://collectables/items_spawner.tscn" id="1_s0ktt"]
+[ext_resource type="Script" path="res://level_two_item_spawner.gd" id="2_txsyj"]
+
+[node name="itemsSpawner" instance=ExtResource("1_s0ktt")]
+script = ExtResource("2_txsyj")
+
+[node name="Timer" parent="." index="0"]
+wait_time = 2.0
