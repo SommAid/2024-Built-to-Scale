@@ -36,4 +36,5 @@ func _on_timer_timeout():
 		var spawn = spawnPoints[randi() % spawnPoints.size()]
 		var enemy = enemyList[randi() % enemyList.size()].instantiate()
 		enemy.position = player.position+(direction*distance)
-		main.add_child(enemy)
+		get_parent().add_child(enemy)
+		#main.add_child(enemy)

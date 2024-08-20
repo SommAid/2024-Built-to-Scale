@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://50eudo4cyirj"]
+
+[ext_resource type="Script" path="res://collectables/items_spawner.gd" id="1_2qv6v"]
+
+[node name="itemsSpawner" type="Node2D"]
+script = ExtResource("1_2qv6v")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
