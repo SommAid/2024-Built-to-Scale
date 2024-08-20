@@ -5,7 +5,7 @@ var temp = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 
 var width = 32
-var height = 16
+var height = 32
 
 var load_chunks = []
 
@@ -14,7 +14,7 @@ func _ready():
 	temp.seed = randi()
 	altitude.seed = randi()
 	
-	altitude.frequency = 0.01
+	altitude.frequency = 0.05
 	
 func _process(delta):
 	var player_list = get_tree().get_nodes_in_group("Player")
@@ -28,7 +28,7 @@ func generate_chunk(pos):
 			var moist = moisture.get_noise_2d(
 				pos.x - (width / 2) + x,
 				pos.y - (width / 2) + y
-			) * 2
+			)
 			
 			var tmp = moisture.get_noise_2d(
 				pos.x - (width / 2) + x,
@@ -40,9 +40,9 @@ func generate_chunk(pos):
 				pos.y - (width / 2) + y
 			) * 10
 			
-			var tmp_x = round(2*moist + 1) / 2
-			var tmp_y = round(2*tmp + 1) / 2
-			#print("tmp_y: ", tmp_y)
+			var tmp_x = round(2 * (moist + 1))
+			var tmp_y = round(2* (tmp + 1) / 2) 
+			print("tmp_y: ", tmp_y)
 			#print("tmp_x: ", tmp_x)
 			
 			
