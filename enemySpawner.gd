@@ -7,8 +7,9 @@ var greenSlime = preload("res://enemy/mob.tscn")
 var rhino = preload("res://enemy/rhino.tscn")
 var soldier = preload("res://enemy/soldier.tscn")
 var blueSlime = preload("res://enemy/Completed Mobs/blue amoeba/blue_amoeba.tscn")
+var octoSlime = preload("res://enemy/Completed Mobs/single cell octo/octo_shotgunner.tscn")
 var spawnPoints = []
-var enemyList = [slime,bee,greenSlime, soldier, rhino, blueSlime]
+var enemyList = [slime,bee,greenSlime, soldier, rhino, blueSlime, octoSlime]
 var player: CharacterBody2D
 var direction: Vector2
 var distance = 300

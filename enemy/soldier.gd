@@ -5,7 +5,7 @@ extends CharacterBody2D
 @export var jump_velocity : int = -400
 
 @export_category("Enemy Health")
-@export var health_amount : int = 100
+@export var health_amount : int = 10
 
 @export_category("Enemy Damage")
 @export var damage_amount : int = 4

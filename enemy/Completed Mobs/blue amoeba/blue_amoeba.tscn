@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bf0md67apmyoc"]
+[gd_scene load_steps=45 format=3 uid="uid://bf0md67apmyoc"]
 
 [ext_resource type="Script" path="res://enemy/Completed Mobs/blue amoeba/blue_amoeba.gd" id="1_wo2t1"]
 [ext_resource type="Texture2D" uid="uid://cae5fuaw1nard" path="res://enemy/Monsters_Creatures_Fantasy/slime_attack.png" id="2_q12tp"]

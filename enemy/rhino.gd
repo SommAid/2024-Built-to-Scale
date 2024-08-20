@@ -46,9 +46,12 @@ func deal_damage() -> int:
 	return damage_amount
 
 
-func _on_hurtbox_body_entered(body):
-	if body.has_method("get_damage_amount"):
-		var node = body as Node
+
+
+
+func _on_hurtbox_area_entered(area):
+	if area.has_method("get_damage_amount"):
+		var node = area as Node
 		health_amount -= node.damage_amount
 		update_health_ui()
 		# print("Health amount: ", str(health_amount))
