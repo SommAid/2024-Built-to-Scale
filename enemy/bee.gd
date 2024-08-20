@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var main = get_tree().get_root().get_node("TestLevel")
+#@onready var main = get_tree().get_root().get_node("TestLevel")
 @onready var projectile = load("res://enemy/projectile.tscn")
 @onready var beebody = %beebody
 
