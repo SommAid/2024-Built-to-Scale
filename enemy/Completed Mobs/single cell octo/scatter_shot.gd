@@ -14,10 +14,9 @@ func _on_timer_timeout():
 	queue_free()
 
 func _on_hitbox_area_entered(area):
-	print("Bullet area entered")
 	bullet_impact()
 
-func get_damage_amount() -> int:
+func deal_damage() -> int:
 	return damage_amount
 
 func bullet_impact():

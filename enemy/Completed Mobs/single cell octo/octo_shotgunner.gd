@@ -94,11 +94,9 @@ func deal_damage() -> int:
 	return damage_amount
 
 func _on_hurtbox_area_entered(area):
-	print("Rager got hit")
 	if area.has_method("get_damage_amount"):
 		var node = area as Node
 		health_amount -= node.damage_amount
-		# print("Health amount: ", str(health_amount))
 		if health_amount <= 0:
 			current_state = enemy_state.Death
 			animated_sprite_2d.play("death")

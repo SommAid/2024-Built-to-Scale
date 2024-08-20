@@ -2,9 +2,11 @@ extends CharacterBody2D
 
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
-@export var health : int = 3
+@export var max_player_health : int = 5
+@export var health : int = 5
 @export var dash_speed = 200
 
+@onready var healthbar = %healthbar
 @onready var animation_tree = $AnimationTree
 @onready var state_machine = animation_tree.get("parameters/playback")
 var dashing = false
@@ -13,14 +15,14 @@ var dash_cooldown = true
 # can set stuff up when the script first runs
 func _ready():
 	update_animation_parameters(starting_direction)
-	%healthbar.max_value = health
+	healthbar.max_value = max_player_health
 	update_health_ui()
 
 func update_health_ui():
-	set_health_bar()
+	healthbar.value = HealthManager.current_health
 
 func  set_health_bar():
-	%healthbar.value = health
+	healthbar.value = health
 
 func _physics_process(_delta):
 	
@@ -64,13 +66,13 @@ func player_death() -> void:
 	queue_free()
 
 func _on_hurtbox_area_entered(area : Node2D):
-	print("Player got hit")
+	# print("Player got hit")
 	if area.is_in_group("Enemy") or area.is_in_group("Enemy Projectile"):
+		print("Player took damage")
 		HealthManager.decrease_health(area.get_parent().deal_damage())
 		update_health_ui()
 		if HealthManager.current_health <= 0:
 			player_death()
-		# print("Ouch I just took: ", str(area.get_parent().deal_damage()))
 
 func _on_dash_timer_timeout():
 	dashing = false
