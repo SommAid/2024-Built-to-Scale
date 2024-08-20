@@ -2,11 +2,11 @@ extends CharacterBody2D
 
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
-@export var max_player_health : int = 20
-@export var health : int = 20
+@export var max_player_health : int = 500
+@export var health : int = 500
 @export var dash_speed = 200
 
-var damage = 25
+var damage = 50
 
 @onready var inv_gun = $AttackPoint/AttackRange
 @onready var healthbar = %healthbar

@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var health_amount : int = 300
 
 @export_category("Enemy Attack")
-@export var damage_amount : int = 300
+@export var damage_amount : int = 75
 
 var NUCLEAR_EXPLOSION = preload("res://projectile/explosions/animated_explosions/nuclear_explosion.tscn")
 

@@ -28,10 +28,10 @@ func _process(delta):
 	if timer_on:
 		time += delta
 	
-	if time > 10 and curr_level == 0:
+	if time > 150 and curr_level == 0:
 		curr_level = 1
 		play_level()
-	elif time > 20 and curr_level == 1:
+	elif time > 300 and curr_level == 1:
 		curr_level = 2
 		play_level()
 	#var secs = fmod(time, 60)

@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var projectile_damage : int = 500
+@export var projectile_damage : int = 50
 
 func _ready():
 	animation_finished

@@ -4,10 +4,10 @@ extends CharacterBody2D
 @export var enemy_speed : int = 100
 
 @export_category("Enemy Health")
-@export var health_amount : int = 700
+@export var health_amount : int = 500
 
 @export_category("Enemy Attack")
-@export var damage_amount : int = 400
+@export var damage_amount : int = 50
 @export var range : int = 200
 @export var bullets : int = 5
 

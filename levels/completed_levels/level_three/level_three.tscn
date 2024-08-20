@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://tvbip5u0txbj"]
 
-[ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_tlsda"]
+[ext_resource type="PackedScene" uid="uid://c77slf4uic4d6" path="res://UI/game_screen.tscn" id="1_tlsda"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="2_m2snx"]
 [ext_resource type="PackedScene" uid="uid://bn2oxakjygtyu" path="res://player_cat/lava_hero/lava_hero.tscn" id="3_dxslx"]
 [ext_resource type="Script" path="res://levels/completed_levels/level_three/TileMap.gd" id="3_ipcfg"]
 [ext_resource type="PackedScene" uid="uid://cjjneojh8m56a" path="res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.tscn" id="4_t4b3s"]
 [ext_resource type="Texture2D" uid="uid://cuy051kxwna7b" path="res://levels/art/space/Blue_Nebula_01-1024x1024.png" id="7_vkqkg"]
-[ext_resource type="PackedScene" uid="uid://dadxy6mwgtgeq" path="res://collectables/items_spawner_level_three.tscn" id="9_4r4uf"]
+[ext_resource type="PackedScene" path="res://collectables/items_spawner_level_three.tscn" id="9_4r4uf"]
 [ext_resource type="PackedScene" uid="uid://8huawfgfc60u" path="res://enemy/enemy_spawner.tscn" id="9_cvp6w"]
 [ext_resource type="Script" path="res://levels/completed_levels/level_three/level_three_enemy_spawner.gd" id="9_g864x"]
 

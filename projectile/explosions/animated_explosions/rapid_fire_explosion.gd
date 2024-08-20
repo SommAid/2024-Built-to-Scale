@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@export var projectile_damage : int = 25
+@export var projectile_damage : int = 20
 @onready var projectile = $"."
 @onready var timer = $Timer
 

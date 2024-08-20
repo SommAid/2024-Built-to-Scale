@@ -8,7 +8,7 @@ extends CharacterBody2D
 @export var health_amount : int = 500
 
 @export_category("Enemy Attack")
-@export var damage_amount : int = 500
+@export var damage_amount : int = 50
 
 # @onready var healthbar = $healthbar
 @onready var sprite_2d = $Sprite2D
