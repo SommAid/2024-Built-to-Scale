@@ -1,6 +1,7 @@
 extends Node
 
 var pause_state : bool = false
+var can_pause : bool = true
 
 var pause_menu_screen = preload("res://UI/pause_screen.tscn")
 var main_menu_screen = preload("res://UI/main_menu.tscn")
@@ -8,10 +9,11 @@ var test_level = "res://levels/test_level.tscn"
 var PAUSE_MENU_SCREEN_instance
 
 func pause_game():
-	pause_state = true
-	get_tree().paused = pause_state
-	PAUSE_MENU_SCREEN_instance = pause_menu_screen.instantiate()
-	get_tree().get_root().add_child(PAUSE_MENU_SCREEN_instance)
+	if can_pause:
+		pause_state = true
+		get_tree().paused = pause_state
+		PAUSE_MENU_SCREEN_instance = pause_menu_screen.instantiate()
+		get_tree().get_root().add_child(PAUSE_MENU_SCREEN_instance)
 	
 
 func resume_game():
@@ -33,3 +35,9 @@ func start_game():
 	resume_game()
 	await get_tree().create_timer(1).timeout
 	get_tree().change_scene_to_file(test_level)
+
+func player_death():
+	can_pause = false
+	await get_tree().create_timer(2).timeout
+	can_pause = true
+	menu_menu()

@@ -15,6 +15,7 @@ var dash_cooldown = true
 # can set stuff up when the script first runs
 func _ready():
 	update_animation_parameters(starting_direction)
+	HealthManager.current_health = max_player_health
 	healthbar.max_value = max_player_health
 	update_health_ui()
 
@@ -63,7 +64,9 @@ func pick_new_state():
 		state_machine.travel("Idle")
 
 func player_death() -> void:
+	GameManager.player_death()
 	queue_free()
+	
 
 func _on_hurtbox_area_entered(area : Node2D):
 	# print("Player got hit")
