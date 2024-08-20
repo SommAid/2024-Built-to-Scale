@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var main = get_node("/root/TestLevel")
+#@onready var main = get_node("/root/TestLevel")
 var slime = preload("res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.tscn")
 var bee = preload("res://enemy/bee.tscn")
 var greenSlime = preload("res://enemy/mob.tscn")
