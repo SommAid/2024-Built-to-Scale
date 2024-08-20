@@ -5,6 +5,7 @@ var slime = preload("res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspber
 var greenSlime = preload("res://enemy/mob.tscn")
 var blueSlime = preload("res://enemy/Completed Mobs/blue amoeba/blue_amoeba.tscn")
 var octoSlime = preload("res://enemy/Completed Mobs/single cell octo/octo_shotgunner.tscn")
+var spawnPoints = []
 var flip = [1,-1]
 var offX = 250
 var offy = 250

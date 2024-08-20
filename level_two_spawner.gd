@@ -1,16 +1,20 @@
 extends Node2D
-
+var bonusHeath = 5
 #@onready var main = get_node("/root/TestLevel")
 var slime = preload("res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.tscn")
 var greenSlime = preload("res://enemy/mob.tscn")
 var blueSlime = preload("res://enemy/Completed Mobs/blue amoeba/blue_amoeba.tscn")
 var octoSlime = preload("res://enemy/Completed Mobs/single cell octo/octo_shotgunner.tscn")
+var rhino = preload("res://enemy/rhino.tscn") 
+var soldier = preload("res://enemy/soldier.tscn")
+var snail  = preload("res://enemy/snail.tscn")
+var bee = preload("res://enemy/bee.tscn")
 var flip = [1,-1]
 var offX = 250
 var offy = 250
 var spawnx 
 var spawny
-var enemyList = [slime,greenSlime, blueSlime, octoSlime]
+var enemyList = [slime,greenSlime, blueSlime, octoSlime,rhino, soldier, snail, bee]
 var player: CharacterBody2D
 var direction: Vector2
 var distance = 300
@@ -22,7 +26,6 @@ func _ready():
 		player = player_list[0] as CharacterBody2D
 	
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -33,6 +36,7 @@ func _on_timer_timeout():
 		spawnx= player.global_position.x + (offX* flip[randi()%flip.size()])
 		spawny = player.global_position.y + (offy* flip[randi()%flip.size()])
 		var enemy = enemyList[randi() % enemyList.size()].instantiate()
+		enemy.health_amount += bonusHeath
 		enemy.position.x = spawnx
 		enemy.position.y = spawny
 		get_parent().add_child(enemy)

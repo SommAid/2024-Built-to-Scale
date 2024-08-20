@@ -3,7 +3,7 @@ extends Node2D
 #@onready var main = get_tree().get_root().get_node("TestLevel")
 @onready var projectile = load("res://enemy/projectile.tscn")
 @onready var beebody = %beebody
-
+var health_amount = 0
 var player : CharacterBody2D
 var player_direction : float
 
