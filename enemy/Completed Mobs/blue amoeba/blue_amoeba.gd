@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 var slime_glob = preload("res://enemy/Completed Mobs/Blueraspberry Slime/slime_glob.tscn")
 
-@onready var healthbar = %healthbar
+@onready var healthbar = $healthbar
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon_area = $WeaponArea
 @onready var rage_duration = $RageDuration

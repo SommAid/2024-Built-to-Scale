@@ -4,17 +4,16 @@ extends CharacterBody2D
 @export var starting_direction : Vector2 = Vector2(0, 1)
 @export var max_player_health : int = 5
 @export var health : int = 5
-@export var dash_speed : int = 200
+@export var dash_speed = 200
 
+@onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var healthbar = %healthbar
-@onready var animation_tree = $AnimationTree
-@onready var state_machine = animation_tree.get("parameters/playback")
 var dashing = false
 var dash_cooldown = true
 
 # can set stuff up when the script first runs
 func _ready():
-	update_animation_parameters(starting_direction)
+	animated_sprite_2d.play("default")
 	healthbar.max_value = max_player_health
 	update_health_ui()
 
@@ -36,7 +35,6 @@ func _physics_process(_delta):
 		dash_cooldown = false
 		%dash_timer.start()
 		%dash_again_timer.start()
-	update_animation_parameters(input_direction)
 	
 	# print(input_direction)
 	
@@ -48,19 +46,7 @@ func _physics_process(_delta):
 	
 	# Move and Slide function uses vel. of character to move character on map
 	
-	pick_new_state()
 	move_and_slide()
-
-func update_animation_parameters(move_input : Vector2):
-	if(move_input != Vector2.ZERO):
-		animation_tree.set("parameters/Walk/blend_position", move_input)
-		animation_tree.set("parameters/Idle/blend_position", move_input)
-		
-func pick_new_state():
-	if(velocity != Vector2.ZERO):
-		state_machine.travel("Walk")
-	else:
-		state_machine.travel("Idle")
 
 func player_death() -> void:
 	queue_free()

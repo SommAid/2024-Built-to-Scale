@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=3 uid="uid://brlv2vgwsls7h"]
+
+[ext_resource type="Script" path="res://player_cat/amoeba hero/amoeba_hero.gd" id="1_70jk5"]
+[ext_resource type="Texture2D" uid="uid://cwebovwvxw6l4" path="res://player_cat/art/single cell hero.png" id="2_jcqdq"]
+[ext_resource type="PackedScene" uid="uid://dbfvjlm0f24e1" path="res://gun/pistol/gun.tscn" id="3_ymhmo"]
+[ext_resource type="Script" path="res://player_cat/healthbar.gd" id="4_trnsc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp8ef"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(0, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu5wd"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(50, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gi7qf"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(100, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne6en"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(150, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5v3hd"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(200, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_52ovs"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(250, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hc3w"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(300, 0, 50, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3o1h"]
+atlas = ExtResource("2_jcqdq")
+region = Rect2(350, 0, 50, 45)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6236p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fp8ef")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu5wd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gi7qf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne6en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5v3hd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_52ovs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hc3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3o1h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rjabx"]
+radius = 13.0384
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qv2x0"]
+radius = 14.0357
+
+[node name="Amoeba Hero" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 10
+script = ExtResource("1_70jk5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.36823, 1)
+sprite_frames = SubResource("SpriteFrames_6236p")
+frame_progress = 0.832396
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rjabx")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Gun" parent="." instance=ExtResource("3_ymhmo")]
+position = Vector2(19, 0)
+
+[node name="hurtbox" type="Area2D" parent="." groups=["Player"]]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_qv2x0")
+debug_color = Color(0.972549, 0, 0.45098, 0.172549)
+
+[node name="dash_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="dash_again_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -10.0
+offset_top = -18.0
+offset_right = 10.0
+offset_bottom = -14.0
+show_percentage = false
+script = ExtResource("4_trnsc")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
