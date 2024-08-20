@@ -324,6 +324,7 @@ one_shot = true
 autostart = true
 
 [node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
 offset_left = -14.0
 offset_top = -25.0
 offset_right = 15.0
