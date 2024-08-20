@@ -2,19 +2,23 @@ extends CharacterBody2D
 
 @export var move_speed : float = 100
 @export var starting_direction : Vector2 = Vector2(0, 1)
-@export var max_player_health : int = 5
-@export var health : int = 5
+@export var max_player_health : int = 20
+@export var health : int = 20
 @export var dash_speed = 200
 
 @onready var inv_gun = $AttackPoint/AttackRange
 @onready var healthbar = %healthbar
 @onready var attack_point = $AttackPoint
+
 var dashing = false
 var dash_cooldown = true
 var enemies_in_range = []
+var point
 
 # can set stuff up when the script first runs
 func _ready():
+	point = attack_point.position
+	HealthManager.current_health = max_player_health
 	healthbar.max_value = max_player_health
 	update_health_ui()
 
@@ -25,7 +29,6 @@ func  set_health_bar():
 	healthbar.value = health
 
 func _physics_process(_delta):
-	
 	# Get Input Direction
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
@@ -36,8 +39,6 @@ func _physics_process(_delta):
 		dash_cooldown = false
 		%dash_timer.start()
 		%dash_again_timer.start()
-	
-	# print(input_direction)
 	
 	# Update velocity
 	if dashing:
@@ -58,7 +59,7 @@ func player_death() -> void:
 	queue_free()
 
 func shoot():
-	const BULLET = preload("res://projectile/bullet.tscn")
+	const BULLET = preload("res://projectile/rock.tscn")
 	var new_bullet = BULLET.instantiate()
 	new_bullet.global_position = attack_point.global_position
 	new_bullet.global_rotation = attack_point.global_rotation

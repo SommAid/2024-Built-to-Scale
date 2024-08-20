@@ -52,7 +52,7 @@ script = ExtResource("3_y6qk0")
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="AttackPoint" type="Node2D" parent="."]
+[node name="AttackPoint" type="Marker2D" parent="."]
 
 [node name="AttackRange" type="Area2D" parent="AttackPoint"]
 collision_mask = 2
