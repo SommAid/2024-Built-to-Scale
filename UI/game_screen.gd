@@ -6,3 +6,4 @@ func _input(event):
 			GameManager.resume_game()
 		else:
 			GameManager.pause_game()
+

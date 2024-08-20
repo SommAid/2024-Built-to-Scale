@@ -42,8 +42,8 @@ func generate_chunk(pos):
 			
 			var tmp_x = round(2 * (moist + 1))
 			var tmp_y = round(2* (tmp + 1) / 2) 
-			print("tmp_y: ", tmp_y)
-			#print("tmp_x: ", tmp_x)
+			# print("tmp_y: ", tmp_y)
+			# print("tmp_x: ", tmp_x)
 			
 			
 			
