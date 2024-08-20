@@ -87,14 +87,12 @@ sprite_frames = SubResource("SpriteFrames_6236p")
 frame_progress = 0.832396
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_rjabx")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="hurtbox" type="Area2D" parent="." groups=["Player"]]
-visible = false
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
