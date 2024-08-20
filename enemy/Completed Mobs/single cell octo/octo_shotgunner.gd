@@ -13,9 +13,6 @@ extends CharacterBody2D
 var scatter_shot = preload("res://enemy/Completed Mobs/single cell octo/scatter_shot.tscn")
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
-@onready var weapon_area = $WeaponArea
-@onready var rage_duration = $RageDuration
-@onready var rage_cooldown = $RageCooldown
 @onready var muzzles = [$Marker2D1, $Marker2D2, $Marker2D3, $Marker2D4]
 
 var shots_in_chamber : int = 8
