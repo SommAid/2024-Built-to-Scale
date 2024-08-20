@@ -4,10 +4,11 @@ var moisture = FastNoiseLite.new()
 var temp = FastNoiseLite.new()
 var altitude = FastNoiseLite.new()
 
-var width = 32
-var height = 32
+var width = 64
+var height = 64
 
 var load_chunks = []
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	moisture.seed = randi()
@@ -40,15 +41,30 @@ func generate_chunk(pos):
 				pos.y - (width / 2) + y
 			) * 10
 			
-			var tmp_x = round(2 * (moist + 1))
-			var tmp_y = round((tmp + 1) / 2) 
-			#print("tmp_y: ", tmp_y)
-			#print("tmp_x: ", tmp_x)
-
+			
+			
+			var test_x = moisture.get_noise_2d(
+				pos.x - (width / 2) + x,
+				pos.y - (width / 2) + y
+			)
+			
+			var tmp_x = round((test_x + 1) * 30)
+			
+			
+			#print("test_x: ", tmp_x)
+			
 			set_cell(0, 
 			Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
-			0, 
-			Vector2(tmp_x, tmp_y))
+			3, 
+			Vector2(tmp_x, round((tmp + 1) / 2) ))
+			
+			#if (tmp_x < 30):
+				#set_cell(1, Vector2i(rng.randf_range(pos.x, pos.y), rng.randf_range(pos.x, pos.y)), 1, Vector2i(9, 5))
+
+			#set_cell(0, 
+			#Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
+			#0, 
+			#Vector2(round(2 * (moist + 1)), round((tmp + 1) / 2) ))
 			
 			#set_cell(0, 
 			#Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
