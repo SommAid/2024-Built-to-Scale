@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://enemy/Completed Mobs/saturn/saturn.gd" id="1_pd45k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1egbx"]
-radius = 64.3817
+radius = 33.1361
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ox4w"]
-radius = 74.0608
+radius = 38.1182
 
 [node name="Saturn" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
@@ -15,7 +15,7 @@ collision_mask = 3
 script = ExtResource("1_pd45k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_odsoe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

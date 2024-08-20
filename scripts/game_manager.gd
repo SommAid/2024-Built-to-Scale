@@ -10,6 +10,7 @@ var PAUSE_MENU_SCREEN_instance
 
 func pause_game():
 	if can_pause:
+		LevelManager.stop_timer()
 		pause_state = true
 		get_tree().paused = pause_state
 		PAUSE_MENU_SCREEN_instance = pause_menu_screen.instantiate()
@@ -20,6 +21,7 @@ func resume_game():
 	if PAUSE_MENU_SCREEN_instance != null && pause_state:
 		PAUSE_MENU_SCREEN_instance.queue_free()
 	if pause_state:
+		LevelManager.start_timer()
 		pause_state = false
 		get_tree().paused = pause_state
 
@@ -32,11 +34,12 @@ func exit_game():
 	get_tree().quit()
 	
 func start_game():
-	resume_game()
-	await get_tree().create_timer(1).timeout
-	get_tree().change_scene_to_file(test_level)
+	LevelManager.start_timer()
+	LevelManager.play_level()
 
 func player_death():
+	LevelManager.stop_timer()
+	LevelManager.reset_timer()
 	can_pause = false
 	await get_tree().create_timer(2).timeout
 	can_pause = true
