@@ -1,5 +1,5 @@
 extends Node2D
-var bonusHeath = 100
+var bonusHeath = 200
 #@onready var main = get_node("/root/TestLevel")
 var slime = preload("res://enemy/Completed Mobs/Blueraspberry Slime/blue_raspberry_slime.tscn")
 var greenSlime = preload("res://enemy/mob.tscn")
