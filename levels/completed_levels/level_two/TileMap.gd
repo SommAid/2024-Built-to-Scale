@@ -17,7 +17,7 @@ func _ready():
 	
 	altitude.frequency = 0.05
 	
-func _process(delta):
+func _process(_delta):
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		var player_tile_pos = local_to_map(player_list[0].position)
