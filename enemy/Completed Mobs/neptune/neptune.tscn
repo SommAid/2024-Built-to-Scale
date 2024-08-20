@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnfb5of0gt5iy"]
+
+[ext_resource type="Texture2D" uid="uid://6lrryualaw1i" path="res://enemy/planets/neptunlikeplanet.png" id="1_hcs40"]
+[ext_resource type="Script" path="res://enemy/Completed Mobs/neptune/neptune.gd" id="1_qx467"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pdrqm"]
+radius = 68.0661
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c3ayp"]
+radius = 73.171
+
+[node name="Neptune" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_qx467")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_hcs40")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_pdrqm")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_c3ayp")
+debug_color = Color(0.980076, 0, 0.382723, 0.42)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(65, -8)
+
+[node name="AttackCooldown" type="Timer" parent="."]
+wait_time = 7.0
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_attack_cooldown_timeout"]

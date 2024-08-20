@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://bcqbaxud1taet"]
+
+[ext_resource type="Texture2D" uid="uid://dv8sw4dxtt763" path="res://projectile/explosions/explosion pack 1/explosion-1-b/spritesheet.png" id="1_tnjrs"]
+[ext_resource type="Script" path="res://projectile/explosions/animated_explosions/rapid_fire_explosion.gd" id="2_ih4n1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6i6w"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohb3g"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jsiag"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07jh7"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jnxk"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1dsv"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buj61"]
+atlas = ExtResource("1_tnjrs")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0cee"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6i6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohb3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jsiag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_07jh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jnxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1dsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buj61")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jco6t"]
+radius = 12.0
+
+[node name="rapid_fire_explosion" type="AnimatedSprite2D"]
+position = Vector2(0, -32)
+sprite_frames = SubResource("SpriteFrames_x0cee")
+autoplay = "default"
+frame_progress = 0.959652
+script = ExtResource("2_ih4n1")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["Enemy Projectile"]]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 20)
+shape = SubResource("CircleShape2D_jco6t")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

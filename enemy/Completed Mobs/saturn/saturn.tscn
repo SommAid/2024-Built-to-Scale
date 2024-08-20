@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://csw62piwlfbjp"]
+
+[ext_resource type="Texture2D" uid="uid://buguqe3enwim0" path="res://enemy/planets/sphereplanet.png" id="1_odsoe"]
+[ext_resource type="Script" path="res://enemy/Completed Mobs/saturn/saturn.gd" id="1_pd45k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1egbx"]
+radius = 64.3817
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ox4w"]
+radius = 74.0608
+
+[node name="Saturn" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_pd45k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_odsoe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1egbx")
+
+[node name="fuse" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_5ox4w")
+debug_color = Color(0.984811, 0, 0.339953, 0.42)
+
+[connection signal="timeout" from="fuse" to="." method="_on_fuse_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
