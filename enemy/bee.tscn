@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=3 uid="uid://bsgptpowje8rr"]
+[gd_scene load_steps=29 format=3 uid="uid://bsgptpowje8rr"]
 
 [ext_resource type="Script" path="res://enemy/bee.gd" id="1_jcgvf"]
 [ext_resource type="Texture2D" uid="uid://nlh78eyni63j" path="res://enemy/Enemies/Bee/Attack (36x34).png" id="1_kfeeu"]
 [ext_resource type="Script" path="res://enemy/beebody.gd" id="2_6ebpe"]
 [ext_resource type="Texture2D" uid="uid://bwfrd7dbu1vvn" path="res://enemy/Enemies/Bee/Hit (36x34).png" id="2_58cbi"]
 [ext_resource type="Texture2D" uid="uid://dljfohflwm0th" path="res://enemy/Enemies/Bee/Idle (36x34).png" id="3_l0ynb"]
+[ext_resource type="Script" path="res://enemy/healthbar.gd" id="6_8rxca"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1ie5i"]
 atlas = ExtResource("1_kfeeu")
@@ -187,6 +188,15 @@ collision_layer = 2
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_lfdwv")
 debug_color = Color(0.988228, 0, 0.304342, 0.42)
+
+[node name="healthbar" type="ProgressBar" parent="beebody"]
+unique_name_in_owner = true
+offset_left = -10.0
+offset_top = -19.0
+offset_right = 11.0
+offset_bottom = -15.0
+show_percentage = false
+script = ExtResource("6_8rxca")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true

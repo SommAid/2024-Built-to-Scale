@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://d16rmedwk6i28"]
+[gd_scene load_steps=31 format=3 uid="uid://d16rmedwk6i28"]
 
 [ext_resource type="Texture2D" uid="uid://lj4g5n7pjqmu" path="res://enemy/Enemies/Rino/Hit (52x34).png" id="1_6ej3y"]
 [ext_resource type="Script" path="res://enemy/rhino.gd" id="1_e1oxs"]
 [ext_resource type="Texture2D" uid="uid://ccuoyiwdiid31" path="res://enemy/Enemies/Rino/Idle (52x34).png" id="2_1odun"]
 [ext_resource type="Texture2D" uid="uid://cpdrr5al0casm" path="res://enemy/Enemies/Rino/Run (52x34).png" id="3_favc5"]
+[ext_resource type="Script" path="res://enemy/healthbar.gd" id="5_0sfse"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r5gvm"]
 atlas = ExtResource("1_6ej3y")
@@ -200,8 +201,17 @@ shape = SubResource("RectangleShape2D_d77tq")
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2, 3)
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_5tltj")
 debug_color = Color(0.783736, 0.350988, 0.661424, 0.42)
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -25.0
+offset_top = -18.0
+offset_right = 24.0
+offset_bottom = -14.0
+show_percentage = false
+script = ExtResource("5_0sfse")
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

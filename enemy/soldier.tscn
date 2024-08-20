@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cdw1lmvdo4q4h"]
+[gd_scene load_steps=36 format=3 uid="uid://cdw1lmvdo4q4h"]
 
 [ext_resource type="Texture2D" uid="uid://b515pnsgcruj3" path="res://enemy/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_hu52k"]
 [ext_resource type="Script" path="res://enemy/soldier.gd" id="1_ryvhy"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bnhxcoiijkbki" path="res://enemy/Monsters_Creatures_Fantasy/Skeleton/Death.png" id="2_wlrt3"]
 [ext_resource type="Texture2D" uid="uid://bwkm03rsjqxqf" path="res://enemy/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="3_i3sey"]
 [ext_resource type="Texture2D" uid="uid://boyhox477cf3k" path="res://enemy/Monsters_Creatures_Fantasy/Skeleton/Walk.png" id="4_4hhcr"]
+[ext_resource type="Script" path="res://enemy/ProgressBar.gd" id="7_csfe3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nnrbj"]
 atlas = ExtResource("1_hu52k")
@@ -203,40 +204,53 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0wi6"]
-size = Vector2(20, 10)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i56fe"]
+size = Vector2(21, 50)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1csya"]
-radius = 34.3293
+[sub_resource type="CircleShape2D" id="CircleShape2D_ms83t"]
+radius = 41.3038
+
+[sub_resource type="Theme" id="Theme_2elj6"]
 
 [node name="soldier" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 2
 script = ExtResource("1_ryvhy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -1)
 sprite_frames = SubResource("SpriteFrames_m2pvu")
-animation = &"die"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 18)
-shape = SubResource("RectangleShape2D_c0wi6")
+position = Vector2(3, -1)
+shape = SubResource("RectangleShape2D_i56fe")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
 unique_name_in_owner = true
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(1, -11)
-shape = SubResource("CircleShape2D_1csya")
+position = Vector2(2, -13)
+rotation = -1.42859
+shape = SubResource("CircleShape2D_ms83t")
 debug_color = Color(0.913976, 0.215171, 0.500195, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.5
 one_shot = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -40.0
+offset_top = -38.0
+offset_right = 57.0
+offset_bottom = -30.0
+theme = SubResource("Theme_2elj6")
+show_percentage = false
+script = ExtResource("7_csfe3")
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

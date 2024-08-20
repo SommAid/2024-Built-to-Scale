@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://bfjweuh7ltkac"]
 
 [ext_resource type="PackedScene" uid="uid://mieoa1yk6c5f" path="res://player_cat/player_cat.tscn" id="1_6blpf"]
-[ext_resource type="PackedScene" uid="uid://c77slf4uic4d6" path="res://UI/game_screen.tscn" id="1_bxwn2"]
+[ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_bxwn2"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="2_04l3g"]
 [ext_resource type="PackedScene" uid="uid://cynafbebnux6j" path="res://enemy/mob.tscn" id="3_ey2fb"]
 [ext_resource type="Texture2D" uid="uid://cpkpot34ftcb2" path="res://tilesets/grasslands/Grass_patches.png" id="3_kw2am"]
@@ -280,6 +280,9 @@ y_sort_enabled = true
 [node name="PlayerCat" parent="." instance=ExtResource("1_6blpf")]
 position = Vector2(-4, -13)
 
+[node name="enemySpawner" parent="PlayerCat" instance=ExtResource("6_wrm12")]
+position = Vector2(4, 13)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
 
@@ -304,8 +307,6 @@ position = Vector2(78, 73)
 
 [node name="bee" parent="." instance=ExtResource("4_30wxc")]
 position = Vector2(-154, 121)
-
-[node name="enemySpawner" parent="." instance=ExtResource("6_wrm12")]
 
 [node name="rhino" parent="." instance=ExtResource("8_ocdmi")]
 position = Vector2(125, -22)

@@ -13,6 +13,14 @@ var dash_cooldown = true
 # can set stuff up when the script first runs
 func _ready():
 	update_animation_parameters(starting_direction)
+	%healthbar.max_value = health
+	update_health_ui()
+
+func update_health_ui():
+	set_health_bar()
+
+func  set_health_bar():
+	%healthbar.value = health
 
 func _physics_process(_delta):
 	
@@ -59,6 +67,7 @@ func _on_hurtbox_area_entered(area : Node2D):
 	print("Player got hit")
 	if area.is_in_group("Enemy") or area.is_in_group("Enemy Projectile"):
 		HealthManager.decrease_health(area.get_parent().deal_damage())
+		update_health_ui()
 		if HealthManager.current_health <= 0:
 			player_death()
 		# print("Ouch I just took: ", str(area.get_parent().deal_damage()))

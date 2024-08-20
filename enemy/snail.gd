@@ -25,6 +25,14 @@ func _ready():
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
+	%healthbar.max_value = health_amount
+	update_health_ui()
+
+func update_health_ui():
+	set_health_bar()
+
+func  set_health_bar():
+	%healthbar.value = health_amount
 
 func _physics_process(_delta):
 	var direction : Vector2
@@ -37,7 +45,7 @@ func _physics_process(_delta):
 			animated_sprite_2d.play("hit")
 			state = animationList.walk
 		direction = global_position.direction_to(player.global_position)
-		var flip = false if direction[0] < 0 else true
+		var flip = true if direction[0] < 0 else false
 		animated_sprite_2d.flip_h = flip
 			
 	else:
@@ -54,6 +62,7 @@ func _on_hurtbox_area_entered(area):
 		state = animationList.hit
 		var node = area as Node
 		health_amount -= node.damage_amount
+		update_health_ui()
 		print("something: ", str(health_amount))
 		if health_amount <= 0:
 			queue_free()
