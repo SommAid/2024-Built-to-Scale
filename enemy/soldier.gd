@@ -113,7 +113,7 @@ func _on_animated_sprite_2d_animation_changed():
 func _on_animated_sprite_2d_frame_changed():
 	#print("SAdasdsada")
 	checkState()
-	print(state)
+	#print(state)
 
 
 func _on_timer_timeout():

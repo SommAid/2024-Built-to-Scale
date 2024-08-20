@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED = 350
+@export var SPEED = 550
 
 var dir: Vector2
 var spawnPos: Vector2
@@ -21,8 +21,9 @@ func _ready():
 		player_direction = global_position.direction_to(player.global_position)
 
 func _physics_process(_delta):
-	#var distance = global_position.distance_to(player.global_position)
-	
+	var distance = global_position.distance_to(get_parent().position)
+	if distance >= 250:
+		queue_free()
 	velocity = player_direction*SPEED
 	#print("Velocity: ", str(velocity))
 	move_and_slide()
