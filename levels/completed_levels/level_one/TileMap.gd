@@ -48,23 +48,9 @@ func generate_chunk(pos):
 				pos.y - (width / 2) + y
 			)
 			
-			var tmp_x = round((test_x + 1) * 30)
-			
-			
-			#print("test_x: ", tmp_x)
-			
-			#set_cell(0, 
-			#Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
-			#3, 
-			#Vector2(tmp_x, round((tmp + 1) / 2) ))
-			
 			set_cell(0, 
 			Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
 			0, 
 			Vector2(round(2 * (moist + 1)), round((tmp + 1) / 2) ))
 			
-			#set_cell(0, 
-			#Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
-			#0, 
-			#Vector2(round(3* (moist + 10) / 2), round(3* (tmp + 10) / 2)))
 
