@@ -19,6 +19,7 @@ var enemies_in_range = []
 # can set stuff up when the script first runs
 func _ready():
 	animated_sprite_2d.play("default")
+	HealthManager.current_health = max_player_health
 	healthbar.max_value = max_player_health
 	update_health_ui()
 
@@ -59,6 +60,7 @@ func _physics_process(_delta):
 		attack_point.look_at(target_enemy.global_position)
 
 func player_death() -> void:
+	GameManager.player_death()
 	queue_free()
 
 func shoot():
