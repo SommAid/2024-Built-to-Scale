@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://s1gqsrfttvp1"]
 
 [ext_resource type="PackedScene" uid="uid://osgwpl6wog3h" path="res://levels/individual_testing.tscn" id="1_676m2"]
-[ext_resource type="PackedScene" uid="uid://bnfb5of0gt5iy" path="res://enemy/Completed Mobs/neptune/neptune.tscn" id="2_7xe8f"]
+[ext_resource type="PackedScene" uid="uid://bf0md67apmyoc" path="res://enemy/Completed Mobs/orange amoeba/orange_amoeba.tscn" id="2_uwhvg"]
 
 [node name="IndividualTesting" instance=ExtResource("1_676m2")]
 
-[node name="Neptune" parent="." index="4" instance=ExtResource("2_7xe8f")]
-position = Vector2(-214, 69)
+[node name="OrangeAmoeba" parent="." index="4" instance=ExtResource("2_uwhvg")]
+position = Vector2(-78, 74)
