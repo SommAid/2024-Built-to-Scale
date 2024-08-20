@@ -12,6 +12,7 @@ extends CharacterBody2D
 
 var slime_glob = preload("res://enemy/Completed Mobs/Blueraspberry Slime/slime_glob.tscn")
 
+@onready var healthbar = %healthbar
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var weapon_area = $WeaponArea
 @onready var rage_duration = $RageDuration
@@ -32,14 +33,14 @@ func _ready():
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = get_tree().get_nodes_in_group("Player")[0] as CharacterBody2D
-	%healthbar.max_value = health_amount
+	healthbar.max_value = health_amount
 	update_health_ui()
 
 func update_health_ui():
 	set_health_bar()
 
 func  set_health_bar():
-	%healthbar.value = health_amount
+	healthbar.value = health_amount
 
 func _physics_process(_delta):
 	var direction : Vector2 = Vector2.ZERO
@@ -70,11 +71,10 @@ func deal_damage() -> int:
 	return damage_amount
 
 func _on_hurtbox_area_entered(area):
-	print("Rager got hit")
 	if area.has_method("get_damage_amount"):
 		var node = area as Node
 		health_amount -= node.damage_amount
-		# print("Health amount: ", str(health_amount))
+		set_health_bar()
 		if health_amount <= 0:
 			current_state = enemy_state.Death
 			animated_sprite_2d.play("death")
