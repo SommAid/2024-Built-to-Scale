@@ -11,18 +11,26 @@ extends CharacterBody2D
 @export var damage_amount : int = 4
 
 @onready var animated_sprite_2d = $AnimatedSprite2D
+@onready var marker = $marker
 # @onready var player = get_node("/root/TestLevel/PlayerCat")
 var player : CharacterBody2D
 enum animationList {hit, idle, walk, attack, die}
 var state = animationList.idle
 var die = false
 var near = false
-
+var marker_position
 
 func wait(seconds: float) -> void:
 	await get_tree().create_timer(seconds).timeout
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 #var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+func hit_box_position(flip : bool):
+	if flip:
+		marker.position.x = -marker_position.x
+	else:
+		marker.position.x = marker_position.x
+
 func _ready():
 	if state == animationList.idle:
 		animated_sprite_2d.play("idle")
@@ -32,6 +40,7 @@ func _ready():
 		player = player_list[0] as CharacterBody2D
 	%ProgressBar.max_value = health_amount
 	update_health_ui()
+	marker_position = marker.position
 
 func update_health_ui():
 	set_health_bar()
@@ -41,6 +50,7 @@ func  set_health_bar():
 
 func checkState():
 	if state == animationList.die and die !=true:
+		speed = 0
 		animated_sprite_2d.play("die")
 		die = true
 		$Timer.start()
@@ -66,6 +76,7 @@ func _physics_process(_delta):
 		direction = global_position.direction_to(player.global_position)
 		var flip = true if direction[0] < 0 else false
 		animated_sprite_2d.flip_h = flip
+		hit_box_position((flip))
 	else:
 		speed = 0
 	#checkState()
@@ -102,6 +113,7 @@ func _on_animated_sprite_2d_animation_changed():
 func _on_animated_sprite_2d_frame_changed():
 	#print("SAdasdsada")
 	checkState()
+	print(state)
 
 
 func _on_timer_timeout():

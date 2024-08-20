@@ -205,10 +205,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i56fe"]
-size = Vector2(21, 50)
+size = Vector2(21, 10)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ms83t"]
-radius = 41.3038
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_48u3k"]
+size = Vector2(14.8646, 49.3389)
 
 [sub_resource type="Theme" id="Theme_2elj6"]
 
@@ -224,7 +224,7 @@ animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, -1)
+position = Vector2(3, 19)
 shape = SubResource("RectangleShape2D_i56fe")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]
@@ -232,9 +232,8 @@ unique_name_in_owner = true
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(2, -13)
-rotation = -1.42859
-shape = SubResource("CircleShape2D_ms83t")
+position = Vector2(20.5677, -1)
+shape = SubResource("RectangleShape2D_48u3k")
 debug_color = Color(0.913976, 0.215171, 0.500195, 0.42)
 
 [node name="Timer" type="Timer" parent="."]
@@ -251,6 +250,9 @@ offset_bottom = -30.0
 theme = SubResource("Theme_2elj6")
 show_percentage = false
 script = ExtResource("7_csfe3")
+
+[node name="marker" type="Marker2D" parent="."]
+position = Vector2(16, 0)
 
 [connection signal="animation_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_changed"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

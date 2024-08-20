@@ -45,6 +45,7 @@ func _on_hurtbox_area_entered(area):
 		var node = area as Node
 		health_amount -= node.damage_amount
 		# print("Health amount: ", str(health_amount))
+		update_health_ui()
 		if health_amount <= 0:
 			get_parent().queue_free()
 

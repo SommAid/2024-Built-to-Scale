@@ -1,8 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://4ey56y6gplt8"]
 
 [ext_resource type="PackedScene" uid="uid://osgwpl6wog3h" path="res://levels/individual_testing.tscn" id="1_pnyq1"]
-[ext_resource type="PackedScene" uid="uid://d16rmedwk6i28" path="res://enemy/rhino.tscn" id="2_8frb6"]
+[ext_resource type="PackedScene" uid="uid://cdw1lmvdo4q4h" path="res://enemy/soldier.tscn" id="2_r5eos"]
 
 [node name="IndividualTesting" instance=ExtResource("1_pnyq1")]
 
-[node name="rhino" parent="." index="4" instance=ExtResource("2_8frb6")]
+[node name="soldier" parent="." index="4" instance=ExtResource("2_r5eos")]
+position = Vector2(152, 83)
