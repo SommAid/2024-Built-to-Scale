@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://5r0y3d8l66j"]
 
-[ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_or0f1"]
+[ext_resource type="PackedScene" uid="uid://c77slf4uic4d6" path="res://UI/game_screen.tscn" id="1_or0f1"]
 [ext_resource type="PackedScene" uid="uid://8huawfgfc60u" path="res://enemy/enemy_spawner.tscn" id="3_eanjg"]
 [ext_resource type="Texture2D" uid="uid://cpkpot34ftcb2" path="res://tilesets/grasslands/Grass_patches.png" id="4_dn35c"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="5_mmbc8"]
