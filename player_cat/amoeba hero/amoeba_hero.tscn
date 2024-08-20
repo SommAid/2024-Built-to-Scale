@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://player_cat/amoeba hero/amoeba_hero.gd" id="1_70jk5"]
 [ext_resource type="Texture2D" uid="uid://cwebovwvxw6l4" path="res://player_cat/art/single cell hero.png" id="2_jcqdq"]
-[ext_resource type="PackedScene" uid="uid://dbfvjlm0f24e1" path="res://gun/pistol/gun.tscn" id="3_ymhmo"]
 [ext_resource type="Script" path="res://player_cat/healthbar.gd" id="4_trnsc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fp8ef"]
@@ -75,6 +74,9 @@ radius = 13.0384
 [sub_resource type="CircleShape2D" id="CircleShape2D_qv2x0"]
 radius = 14.0357
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_swqes"]
+radius = 166.012
+
 [node name="Amoeba Hero" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 10
 script = ExtResource("1_70jk5")
@@ -85,15 +87,14 @@ sprite_frames = SubResource("SpriteFrames_6236p")
 frame_progress = 0.832396
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_rjabx")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="Gun" parent="." instance=ExtResource("3_ymhmo")]
-position = Vector2(19, 0)
-
 [node name="hurtbox" type="Area2D" parent="." groups=["Player"]]
+visible = false
 collision_mask = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
@@ -116,6 +117,19 @@ offset_bottom = -14.0
 show_percentage = false
 script = ExtResource("4_trnsc")
 
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AttackPoint" type="Node2D" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="AttackPoint"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackPoint/AttackRange"]
+shape = SubResource("CircleShape2D_swqes")
+debug_color = Color(0.893029, 0.0262925, 0.777092, 0.42)
+
 [connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

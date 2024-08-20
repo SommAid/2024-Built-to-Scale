@@ -6,10 +6,13 @@ extends CharacterBody2D
 @export var health : int = 5
 @export var dash_speed = 200
 
+@onready var inv_gun = $AttackPoint/AttackRange
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var healthbar = %healthbar
+@onready var attack_point = $AttackPoint
 var dashing = false
 var dash_cooldown = true
+var enemies_in_range = []
 
 # can set stuff up when the script first runs
 func _ready():
@@ -47,9 +50,21 @@ func _physics_process(_delta):
 	# Move and Slide function uses vel. of character to move character on map
 	
 	move_and_slide()
+	
+	enemies_in_range = inv_gun.get_overlapping_bodies()
+	if enemies_in_range.size() > 0:
+		var target_enemy = enemies_in_range.front()
+		attack_point.look_at(target_enemy.global_position)
 
 func player_death() -> void:
 	queue_free()
+
+func shoot():
+	const BULLET = preload("res://projectile/bullet.tscn")
+	var new_bullet = BULLET.instantiate()
+	new_bullet.global_position = attack_point.global_position
+	new_bullet.global_rotation = attack_point.global_rotation
+	add_child(new_bullet)
 
 func _on_hurtbox_area_entered(area : Node2D):
 	# print("Player got hit")
@@ -65,3 +80,9 @@ func _on_dash_timer_timeout():
 
 func _on_dash_again_timer_timeout():
 	dash_cooldown = true
+
+
+func _on_timer_timeout():
+		# Ensures there is somebody in range to shoot at
+	if enemies_in_range.size() > 0:
+		shoot()
