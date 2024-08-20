@@ -41,6 +41,7 @@ func _ready():
 	%ProgressBar.max_value = health_amount
 	update_health_ui()
 	marker_position = marker.position
+	print(health_amount)
 
 func update_health_ui():
 	set_health_bar()

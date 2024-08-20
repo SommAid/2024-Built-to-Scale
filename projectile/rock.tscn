@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5sq5py0gcn8b"]
+
+[ext_resource type="Script" path="res://projectile/rock.gd" id="1_ibdn0"]
+[ext_resource type="Texture2D" uid="uid://dumjj21ix4j2o" path="res://projectile/rock.png" id="2_84hqa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4w85a"]
+radius = 8.03547
+
+[node name="Bullet" type="Area2D"]
+top_level = true
+position = Vector2(4, 3)
+rotation = 0.0553759
+collision_mask = 2
+script = ExtResource("1_ibdn0")
+
+[node name="Projectile" type="Sprite2D" parent="."]
+position = Vector2(-4.15991, -2.77401)
+rotation = -0.120428
+scale = Vector2(0.748214, 0.748214)
+texture = ExtResource("2_84hqa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2.16298, -2.88471)
+rotation = -0.249211
+shape = SubResource("CircleShape2D_4w85a")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

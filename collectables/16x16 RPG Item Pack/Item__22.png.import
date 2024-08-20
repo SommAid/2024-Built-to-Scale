@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bg5hntlet05ek"
-path="res://.godot/imported/Lava.png-0fc8c9eef208a90e21bdf99c24f4c2e2.ctex"
+uid="uid://b58qnng5nn6sj"
+path="res://.godot/imported/Item__22.png-87c3e992a89b3eee8d767ddce6718687.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://enemy/planets/Lava.png"
-dest_files=["res://.godot/imported/Lava.png-0fc8c9eef208a90e21bdf99c24f4c2e2.ctex"]
+source_file="res://collectables/16x16 RPG Item Pack/Item__22.png"
+dest_files=["res://.godot/imported/Item__22.png-87c3e992a89b3eee8d767ddce6718687.ctex"]
 
 [params]
 

@@ -1,9 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ey56y6gplt8"]
+[gd_scene load_steps=7 format=3 uid="uid://4ey56y6gplt8"]
 
 [ext_resource type="PackedScene" uid="uid://osgwpl6wog3h" path="res://levels/individual_testing.tscn" id="1_pnyq1"]
-[ext_resource type="PackedScene" uid="uid://bsgptpowje8rr" path="res://enemy/bee.tscn" id="2_7whbc"]
+[ext_resource type="PackedScene" uid="uid://cvst3u2v6wmad" path="res://collectables/items/cheese.tscn" id="2_e61wa"]
+[ext_resource type="PackedScene" uid="uid://cdw1lmvdo4q4h" path="res://enemy/soldier.tscn" id="2_r5eos"]
+[ext_resource type="PackedScene" uid="uid://50eudo4cyirj" path="res://collectables/items_spawner.tscn" id="3_unok8"]
+[ext_resource type="PackedScene" uid="uid://dbtq86mn3ovrg" path="res://collectables/items/sword.tscn" id="4_0hjui"]
+[ext_resource type="PackedScene" uid="uid://8huawfgfc60u" path="res://enemy/enemy_spawner.tscn" id="6_bvfhe"]
 
 [node name="IndividualTesting" instance=ExtResource("1_pnyq1")]
 
-[node name="bee" parent="." index="4" instance=ExtResource("2_7whbc")]
-position = Vector2(-110, -5)
+[node name="Cheese" parent="." index="4" instance=ExtResource("2_e61wa")]
+position = Vector2(62, 42)
+
+[node name="itemsSpawner" parent="." index="5" instance=ExtResource("3_unok8")]
+
+[node name="sword" parent="." index="6" instance=ExtResource("4_0hjui")]
+position = Vector2(-105, 44)
+
+[node name="soldier" parent="." index="7" instance=ExtResource("2_r5eos")]
+
+[node name="enemySpawner" parent="." index="8" instance=ExtResource("6_bvfhe")]

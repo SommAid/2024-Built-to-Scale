@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw86kegjr6j5v"]
+
+[ext_resource type="Script" path="res://rock.gd" id="1_o0r5h"]
+[ext_resource type="Texture2D" uid="uid://dumjj21ix4j2o" path="res://projectile/rock.png" id="2_84hqa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhtfn"]
+radius = 11.0
+
+[node name="rock" type="Area2D"]
+script = ExtResource("1_o0r5h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_84hqa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bhtfn")

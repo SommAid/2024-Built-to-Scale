@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn2oxakjygtyu"]
+
+[ext_resource type="Script" path="res://player_cat/lava_hero/lava_hero.gd" id="1_kqouj"]
+[ext_resource type="Texture2D" uid="uid://bg5hntlet05ek" path="res://player_cat/lava_hero/Lava.png" id="1_sqdim"]
+[ext_resource type="Script" path="res://player_cat/healthbar.gd" id="3_y6qk0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rjabx"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qv2x0"]
+radius = 14.0357
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_swqes"]
+radius = 166.012
+
+[node name="Lava Hero" type="CharacterBody2D" groups=["Player"]]
+collision_mask = 34
+script = ExtResource("1_kqouj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sqdim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rjabx")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="hurtbox" type="Area2D" parent="." groups=["Player"]]
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+shape = SubResource("CircleShape2D_qv2x0")
+debug_color = Color(0.972549, 0, 0.45098, 0.172549)
+
+[node name="dash_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+
+[node name="dash_again_timer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -10.0
+offset_top = -31.0
+offset_right = 10.0
+offset_bottom = -27.0
+show_percentage = false
+script = ExtResource("3_y6qk0")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AttackPoint" type="Marker2D" parent="."]
+
+[node name="AttackRange" type="Area2D" parent="AttackPoint"]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackPoint/AttackRange"]
+shape = SubResource("CircleShape2D_swqes")
+debug_color = Color(0.893029, 0.0262925, 0.777092, 0.42)
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

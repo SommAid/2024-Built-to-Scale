@@ -326,7 +326,7 @@ autostart = true
 [node name="healthbar" type="ProgressBar" parent="."]
 offset_left = -14.0
 offset_top = -25.0
-offset_right = 12.0
+offset_right = 15.0
 offset_bottom = -21.0
 show_percentage = false
 script = ExtResource("6_aafrg")
@@ -334,6 +334,6 @@ script = ExtResource("6_aafrg")
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="area_entered" from="WeaponArea" to="." method="_on_weapon_area_area_entered"]
-[connection signal="timeout" from="RageDuration" to="." method="_on_charge_duration_timeout"]
 [connection signal="timeout" from="RageDuration" to="." method="_on_rage_duration_timeout"]
+[connection signal="timeout" from="RageDuration" to="." method="_on_charge_duration_timeout"]
 [connection signal="timeout" from="RageCooldown" to="." method="_on_rage_cooldown_timeout"]

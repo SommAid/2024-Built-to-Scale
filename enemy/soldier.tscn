@@ -205,7 +205,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i56fe"]
-size = Vector2(21, 10)
+size = Vector2(27.5, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48u3k"]
 size = Vector2(14.8646, 49.3389)
@@ -224,7 +224,7 @@ animation = &"attack"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 19)
+position = Vector2(-0.25, 6)
 shape = SubResource("RectangleShape2D_i56fe")
 
 [node name="Hurtbox" type="Area2D" parent="." groups=["Enemy"]]

@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://dbtq86mn3ovrg"]
+
+[ext_resource type="Script" path="res://collectables/items/sword.gd" id="1_6ji8r"]
+[ext_resource type="Texture2D" uid="uid://bycp64m1ny1nh" path="res://collectables/sprites/sword.png" id="1_fkagh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q350i"]
+atlas = ExtResource("1_fkagh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7751c"]
+atlas = ExtResource("1_fkagh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br0we"]
+atlas = ExtResource("1_fkagh")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvrfw"]
+atlas = ExtResource("1_fkagh")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_emtqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q350i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7751c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br0we")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vvrfw")
+}],
+"loop": true,
+"name": &"shine",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1nww4"]
+size = Vector2(20.4404, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3qmh"]
+size = Vector2(22.3724, 8.43173)
+
+[node name="sword" type="CharacterBody2D" groups=["Item"]]
+collision_layer = 32
+collision_mask = 33
+script = ExtResource("1_6ji8r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_emtqg")
+animation = &"shine"
+frame_progress = 0.838258
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.38419e-07, -2.38419e-07)
+rotation = 0.771912
+shape = SubResource("RectangleShape2D_1nww4")
+
+[node name="hurtbox" type="Area2D" parent="." groups=["Item"]]
+collision_layer = 32
+collision_mask = 33
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-0.0714213, -0.0569331)
+rotation = 0.672996
+shape = SubResource("RectangleShape2D_l3qmh")
+debug_color = Color(0.861914, 0.000638599, 0.870884, 0.42)
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
