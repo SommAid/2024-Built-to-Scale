@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://tvbip5u0txbj"]
 
-[ext_resource type="PackedScene" uid="uid://c77slf4uic4d6" path="res://UI/game_screen.tscn" id="1_tlsda"]
+[ext_resource type="PackedScene" path="res://UI/game_screen.tscn" id="1_tlsda"]
 [ext_resource type="Texture2D" uid="uid://dsgi1sj1ro1hk" path="res://tilesets/grasslands/Grass.png" id="2_m2snx"]
 [ext_resource type="PackedScene" uid="uid://bn2oxakjygtyu" path="res://player_cat/lava_hero/lava_hero.tscn" id="3_dxslx"]
 [ext_resource type="Script" path="res://levels/completed_levels/level_three/TileMap.gd" id="3_ipcfg"]
@@ -12536,6 +12536,7 @@ layer_1/tile_data = PackedInt32Array()
 script = ExtResource("3_ipcfg")
 
 [node name="Lava Hero" parent="." instance=ExtResource("3_dxslx")]
+collision_mask = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
