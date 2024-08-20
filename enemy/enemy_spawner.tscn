@@ -5,32 +5,8 @@
 [node name="enemySpawner" type="Node2D"]
 script = ExtResource("1_8luyq")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(450, -50)
-
-[node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(600, -50)
-
-[node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(-50, 450)
-
-[node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(-50, 200)
-
-[node name="Marker2D5" type="Marker2D" parent="."]
-position = Vector2(450, 700)
-
-[node name="Marker2D6" type="Marker2D" parent="."]
-position = Vector2(600, 700)
-
-[node name="Marker2D7" type="Marker2D" parent="."]
-position = Vector2(1200, 200)
-
-[node name="Marker2D8" type="Marker2D" parent="."]
-position = Vector2(1200, 400)
-
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

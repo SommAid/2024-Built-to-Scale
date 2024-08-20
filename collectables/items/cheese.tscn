@@ -60,7 +60,7 @@ script = ExtResource("1_j6tfg")
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_3hacd")
 animation = &"spin"
-frame_progress = 0.205947
+frame_progress = 0.00798747
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)

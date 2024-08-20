@@ -1,7 +1,8 @@
 extends Node2D
 
 var cheese = preload("res://collectables/items/cheese.tscn")
-var box = [cheese]
+var sword = preload("res://collectables/items/sword.tscn")
+var box = [cheese,sword]
 var flip = [1,-1]
 
 var player: CharacterBody2D

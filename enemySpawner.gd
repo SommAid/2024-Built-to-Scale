@@ -9,6 +9,11 @@ var soldier = preload("res://enemy/soldier.tscn")
 var blueSlime = preload("res://enemy/Completed Mobs/blue amoeba/blue_amoeba.tscn")
 var octoSlime = preload("res://enemy/Completed Mobs/single cell octo/octo_shotgunner.tscn")
 var spawnPoints = []
+var flip = [1,-1]
+var offX = 250
+var offy = 250
+var spawnx 
+var spawny
 var enemyList = [slime,bee,greenSlime, soldier, rhino, blueSlime, octoSlime]
 var player: CharacterBody2D
 var direction: Vector2
@@ -16,9 +21,6 @@ var distance = 300
 var new_posiotn: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in get_children():
-		if i is Marker2D:
-			spawnPoints.append(i)
 	var player_list = get_tree().get_nodes_in_group("Player")
 	if player_list.size() > 0:
 		player = player_list[0] as CharacterBody2D
@@ -32,9 +34,10 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if player != null:
-		direction = (position-player.position).normalized()
-		var spawn = spawnPoints[randi() % spawnPoints.size()]
+		spawnx= player.global_position.x + (offX* flip[randi()%flip.size()])
+		spawny = player.global_position.y + (offy* flip[randi()%flip.size()])
 		var enemy = enemyList[randi() % enemyList.size()].instantiate()
-		enemy.position = player.position+(direction*distance)
+		enemy.position.x = spawnx
+		enemy.position.y = spawny
 		get_parent().add_child(enemy)
 		#main.add_child(enemy)

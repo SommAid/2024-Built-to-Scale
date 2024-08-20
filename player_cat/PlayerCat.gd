@@ -76,6 +76,7 @@ func _on_hurtbox_area_entered(area : Node2D):
 		update_health_ui()
 		if HealthManager.current_health <= 0:
 			player_death()
+	
 
 func _on_dash_timer_timeout():
 	dashing = false
