@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://1u3ctmco8f3e"]
+[gd_scene load_steps=41 format=3 uid="uid://1u3ctmco8f3e"]
 
 [ext_resource type="Script" path="res://enemy/Completed Mobs/single cell octo/octo_shotgunner.gd" id="1_sggy2"]
 [ext_resource type="Texture2D" uid="uid://0mks3u08sirw" path="res://enemy/Monsters_Creatures_Fantasy/Single Celled Ranger/octo_charge.png" id="2_jcnej"]
 [ext_resource type="Texture2D" uid="uid://bcx4mc87b6qsw" path="res://enemy/Monsters_Creatures_Fantasy/Single Celled Ranger/octo_attack.png" id="2_u03gm"]
 [ext_resource type="Texture2D" uid="uid://b486rxtoeoa72" path="res://enemy/Monsters_Creatures_Fantasy/Single Celled Ranger/octo move.png" id="3_iyv3q"]
 [ext_resource type="Texture2D" uid="uid://buk0gtmomaocc" path="res://enemy/Monsters_Creatures_Fantasy/Single Celled Ranger/octo die.png" id="4_gp1kr"]
+[ext_resource type="Script" path="res://enemy/healthbar.gd" id="6_jqevx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t05ig"]
 atlas = ExtResource("2_u03gm")
@@ -292,6 +293,15 @@ position = Vector2(25, 6)
 
 [node name="Marker2D4" type="Marker2D" parent="."]
 position = Vector2(19, 11)
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -24.0
+offset_top = -26.0
+offset_right = 27.0
+offset_bottom = -21.0
+show_percentage = false
+script = ExtResource("6_jqevx")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
