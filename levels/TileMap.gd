@@ -41,12 +41,10 @@ func generate_chunk(pos):
 			) * 10
 			
 			var tmp_x = round(2 * (moist + 1))
-			var tmp_y = round(2* (tmp + 1) / 2) 
-			# print("tmp_y: ", tmp_y)
-			# print("tmp_x: ", tmp_x)
-			
-			
-			
+			var tmp_y = round((tmp + 1) / 2) 
+			#print("tmp_y: ", tmp_y)
+			#print("tmp_x: ", tmp_x)
+
 			set_cell(0, 
 			Vector2i(pos.x - (width/2) + x, pos.y - (width/2) + y), 
 			0, 
