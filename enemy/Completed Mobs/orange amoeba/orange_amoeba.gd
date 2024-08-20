@@ -1,14 +1,16 @@
 extends CharacterBody2D
 
 @export_category("Enemy Velocity")
-@export var enemy_speed : int = 28
-@export var rage_speed : int = 150
+@export var enemy_speed : int = 35
+@export var rage_speed : int = 175
 
 @export_category("Enemy Health")
-@export var health_amount : int = 25
+@export var health_amount : int = 300
 
 @export_category("Enemy Attack")
-@export var damage_amount : int = 2
+@export var damage_amount : int = 300
+
+var NUCLEAR_EXPLOSION = preload("res://projectile/explosions/animated_explosions/nuclear_explosion.tscn")
 
 @onready var healthbar = $healthbar
 @onready var animated_sprite_2d = $AnimatedSprite2D
@@ -75,6 +77,9 @@ func _on_hurtbox_area_entered(area):
 		set_health_bar()
 		if health_amount <= 0:
 			current_state = enemy_state.Death
+			var nuclear = NUCLEAR_EXPLOSION.instantiate() as Node2D
+			nuclear.global_position = global_position
+			get_parent().add_child(nuclear)
 			animated_sprite_2d.play("death")
 			animated_sprite_2d.animation_finished
 
@@ -95,7 +100,7 @@ func _on_animated_sprite_2d_animation_finished():
 		rage_duration.start()
 	elif current_state == enemy_state.Break:
 		current_state = enemy_state.Walk
-	else:
+	elif current_state == enemy_state.Death:
 		queue_free()
 
 func _on_rage_duration_timeout():
