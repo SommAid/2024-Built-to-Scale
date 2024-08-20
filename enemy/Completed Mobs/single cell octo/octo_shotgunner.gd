@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @export_category("Enemy Attack")
 @export var damage_amount : int = 2
-@export var range : int = 250
+@export var range : int = 200
 
 var scatter_shot = preload("res://enemy/Completed Mobs/single cell octo/scatter_shot.tscn")
 
@@ -86,8 +86,8 @@ func shotgun_attack(direction : Vector2):
 		for muzzle in muzzles:
 			remaining_shots -= 1
 			var scatter_shot_instance = scatter_shot.instantiate() as Node2D
-			scatter_shot_instance.direction = muzzle.global_position.direction_to(player.global_position + Vector2(randi_range(-20,20),randi_range(-20, 20)))
-			scatter_shot_instance.global_position = muzzle.global_position # + global_position - Vector2(2, -1)
+			scatter_shot_instance.direction = muzzle.global_position.direction_to((player.global_position if player != null else Vector2.ZERO) + Vector2(randi_range(-20,20),randi_range(-20, 20)))
+			scatter_shot_instance.global_position = muzzle.global_position
 			get_parent().add_child(scatter_shot_instance)
 	
 func deal_damage() -> int:
