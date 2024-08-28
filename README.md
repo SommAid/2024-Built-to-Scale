@@ -1,6 +1,7 @@
 # 2024 GMTK Game Jam
------------
+
 > Prompt: Built to Scale
+
 ### Game Description
 
 Start as a tiny single-celled organism and fight through waves of endlessly spawned monsters and creatures. Survive the onslaught long enough to grow larger and larger in size until you belong in the solar system.
