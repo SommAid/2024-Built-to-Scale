@@ -2,11 +2,11 @@
 > Prompt: Built to Scale
 ### Game Description
 
-Start as a tiny single celled organism and fight through waves of endlessly spawned monsters and creatures. Survive the onslaught long enough to grow larger and larger in size until you belong in the solar system.
+Start as a tiny single-celled organism and fight through waves of endlessly spawned monsters and creatures. Survive the onslaught long enough to grow larger and larger in size until you belong in the solar system.
 
 ### About the Game
 
-Starting off the game begin as a single celled organism that shoots at the enemies automatically. If you can survive for two and a half minutes then you will be able to grow in size and meet new enemies. You completed the game once you turn into a planet and have to fight other celestial beings.
+Starting off the game begin as a single-celled organism that shoots at the enemies automatically. If you can survive for two and a half minutes then you will be able to grow in size and meet new enemies. You completed the game once you turn into a planet and have to fight other celestial beings.
 
 ### How to Play
 
